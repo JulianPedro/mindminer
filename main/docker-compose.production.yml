@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  django:
+    build:
+      args:
+        MODE: production
+    command: gunicorn --bind :8000 --limit-request-line 8190 --workers 5 mindminer.wsgi:application
+    environment:
+      MODE: production
+
+  nginx:
+    container_name: mindminer_nginx
+    build: ./nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ssl_data:/etc/resty-auto-ssl
+      - staticfiles:/app/mindminer/staticfiles
+      - mediafiles:/app/mindminer/mediafiles
+    #environment:
+    #  ALLOWED_DOMAINS: '<domain>.com'
+    #  SITES: '<domain>.com=django:8000'
+    depends_on:
+      - django
+
+volumes:
+  ssl_data:
+  staticfiles:
+  mediafiles:

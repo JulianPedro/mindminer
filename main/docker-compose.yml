@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  django:
+    container_name: mindminer_django
+    restart: always
+    build:
+      context: ./django
+    volumes:
+      - ./django/:/app/
+      - staticfiles:/app/mindminer/staticfiles
+      - mediafiles:/app/mindminer/mediafiles
+    ports:
+      - 8000:8000
+    env_file:
+      - ./env/main.env
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: mindminer_postgres
+    restart: always
+    image: postgres:11.6-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - ./env/main.env
+
+volumes:
+  postgres_data:
+  staticfiles:
+  mediafiles:
