@@ -7,7 +7,7 @@ services:
     build:
       context: ./django
     volumes:
-      - ./django/:/app/
+      - ./backend/django/:/app/
       - staticfiles:/app/mindminer/staticfiles
       - mediafiles:/app/mindminer/mediafiles
     ports:
