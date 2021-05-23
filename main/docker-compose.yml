@@ -13,7 +13,7 @@ services:
     ports:
       - 8000:8000
     env_file:
-      - ./env/main.env
+      - ./backend/env/main.env
     depends_on:
       - postgres
 
@@ -24,7 +24,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - ./env/main.env
+      - ./backend/env/main.env
+  frontend:
+    container_name: frontend
+    restart: always
+    build:
+      context: ./frontend
+    volumes:
+    - ./
+
 
 volumes:
   postgres_data:
