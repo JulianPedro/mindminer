@@ -51,7 +51,7 @@ jobs:
         SQL_DATABASE: postgres
         SQL_USER: postgres
         SQL_PASSWORD: postgres
-        SQL_HOST: postgres
+        SQL_HOST: localhost
         SQL_PORT: 5432
       run: |
         python main/backend/django/manage.py test
