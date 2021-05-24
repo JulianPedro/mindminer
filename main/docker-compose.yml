@@ -5,7 +5,7 @@ services:
     container_name: mindminer_django
     restart: always
     build:
-      context: ./django
+      context: ./backend/django
     volumes:
       - ./backend/django/:/app/
       - staticfiles:/app/mindminer/staticfiles
@@ -25,13 +25,14 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - ./backend/env/main.env
-  frontend:
-    container_name: frontend
-    restart: always
-    build:
-      context: ./frontend
-    volumes:
-    - ./
+
+  #frontend:
+  #  container_name: frontend
+  #  restart: always
+  #  build:
+  #    context: ./frontend
+  #  volumes:
+  #  - ./
 
 
 volumes:

@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from subject.models import Subject, History
+
+
+admin.site.register(Subject)
+admin.site.register(History)
