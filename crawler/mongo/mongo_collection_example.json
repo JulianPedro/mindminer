@@ -1,0 +1,13 @@
+{
+  "id": null,
+  "tweet_id": null,
+  "tweet_text": null,
+  "user_id": null,
+  "user_name": null,
+  "hashtag": null,
+  "discover_date": null,
+  "analysis_date": null,
+  "analysis_result": null,
+  "positive_result": null,
+  "negative_result": null
+}

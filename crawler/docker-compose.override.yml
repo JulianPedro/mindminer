@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  crawlers:
+    volumes:
+      - ./scrapy/:/app
+    ports:
+      - 6800:6800
+    env_file:
+      - ./env/dev.env
+  mongo:
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - 27017:27017
+    env_file:
+      - ./env/dev.env
+    environment:
+      MODE: development
+
+volumes:
+  mongo_data:

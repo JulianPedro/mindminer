@@ -1,0 +1,8 @@
+-r ./main.txt
+prospector==1.2.0
+bandit==1.6.2
+ipython==7.11.1
+behave-django==1.4.0
+splinter[django]==0.13.0
+freezegun==0.3.15
+factory-boy==2.12.0
