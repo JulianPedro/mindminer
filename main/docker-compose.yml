@@ -26,14 +26,14 @@ services:
     environment:
       - ./backend/env/main.env
 
-  #frontend:
-  #  container_name: frontend
-  #  restart: always
-  #  build:
-  #    context: ./frontend
-  #  volumes:
-  #  - ./
-
+  frontend:
+    container_name: frontend
+    restart: always
+    build:
+      context: ./frontend
+    volumes:
+      - ./frontend:/usr/src/mindminer
+      - /usr/src/app/node_modules
 
 volumes:
   postgres_data:
