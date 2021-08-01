@@ -8,6 +8,7 @@ services:
       - 6800:6800
     env_file:
       - ./env/dev.env
+      - ./env/twitter_secret.env
   mongo:
     volumes:
       - mongo_data:/data/db

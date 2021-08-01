@@ -7,10 +7,18 @@ from scrapy import Item, Field
 
 
 class Tweet(Item):
-    id = Field()
-    data = Field()
-
-
-class User(Item):
-    id = Field()
-    data = Field()
+    tweet_id = Field()
+    tweet_text = Field()
+    tweet_date = Field()
+    tweet_source = Field()
+    tweet_url = Field()
+    user_id = Field()
+    user_name = Field()
+    user_photo = Field()
+    hashtag = Field()
+    discover_date = Field()
+    analysis_date = Field()
+    analysis_result = Field()
+    positive_result = Field()
+    negative_result = Field()
+    captured_by = Field()

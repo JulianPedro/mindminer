@@ -1,6 +1,6 @@
+import os
 import re
 import json
-import logging
 from urllib.parse import quote
 
 from scrapy import http
@@ -8,7 +8,7 @@ from scrapy.spiders import CrawlSpider
 from scrapy.core.downloader.middleware import DownloaderMiddlewareManager
 from scrapy_selenium import SeleniumRequest, SeleniumMiddleware
 
-from mindminer.items import Tweet, User
+from mindminer.items import Tweet
 
 
 class TwitterNoAuth(CrawlSpider):
@@ -80,9 +80,9 @@ class TwitterNoAuth(CrawlSpider):
             self.x_guest_token = driver.get_cookie('gt')['value']
         except Exception as error:
             self.log(f'Cookies are not updated! Traceback: {error}')
+        token = os.environ.get('bearer_token')
         self.headers = {
-            'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Z'
-                             'v7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+            'authorization': f'Bearer {token}',
             'x-guest-token': self.x_guest_token,
         }
 
@@ -107,26 +107,23 @@ class TwitterNoAuth(CrawlSpider):
     def parse_result_page(self, response):
         """ Get tweets and users. """
         data = json.loads(response.text)
-        for item in self.parse_tweet_item(data['globalObjects']['tweets']):
-            yield item
-        for item in self.parse_user_item(data['globalObjects']['users']):
+        for item in self.parse_tweet_item(data['globalObjects']['tweets'], data['globalObjects']['users']):
             yield item
         cursor = self.cursor_re.search(response.text).group(1)
         for request in self.start_query_request(cursor=cursor):
             yield request
 
-    @staticmethod
-    def parse_tweet_item(items):
-        for key, value in items.items():
+    def parse_tweet_item(self, tweets, users):
+        for tweet_key, tweet_value in tweets.items():
             tweet = Tweet()
-            tweet['id'] = key
-            tweet['data'] = value
+            tweet['tweet_id'] = tweet_key
+            tweet['tweet_text'] = tweet_value['full_text']
+            tweet['tweet_date'] = tweet_value['created_at']
+            tweet['tweet_source'] = tweet_value['source']
+            tweet['user_id'] = tweet_value['user_id']
+            tweet['hashtag'] = self.query
+            for user_key, user_value in users.items():
+                if str(user_key) == str(tweet['user_id']):
+                    tweet['user_name'] = user_value['screen_name']
+                    tweet['user_photo'] = user_value['profile_image_url']
             yield tweet
-
-    @staticmethod
-    def parse_user_item(items):
-        for key, value in items.items():
-            user = User()
-            user['id'] = key
-            user['data'] = value
-            yield

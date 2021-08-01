@@ -69,6 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+    'mindminer.pipelines.DataPipeline': 200,
     'mindminer.pipelines.MongoDBPipeline': 300,
 }
 

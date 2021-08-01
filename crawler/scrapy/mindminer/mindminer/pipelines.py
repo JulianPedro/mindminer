@@ -5,10 +5,11 @@
 
 
 # useful for handling different item types with a single interface
+import datetime
 import pymongo
+from pymongo.errors import DuplicateKeyError
 
 from scrapy.utils.project import get_project_settings
-from scrapy.exceptions import DropItem
 
 
 class MongoDBPipeline:
@@ -23,9 +24,22 @@ class MongoDBPipeline:
         self.collection = db[self.settings['MONGODB_COLLECTION']]
 
     def process_item(self, item, spider):
-        for data in item:
-            if not data:
-                raise DropItem('Missing {0}!'.format(data))
-        self.collection.insert(dict(item))
+        try:
+            self.collection.insert(dict(item))
+        except DuplicateKeyError:
+            spider.log('Item already exists! Pass')
         spider.log('Question added to MongoDB database!')
+        return item
+
+
+class DataPipeline:
+    """ Pipeline to add metadata in items. """
+
+    def process_item(self, item, spider):
+        item['discover_date'] = datetime.datetime.now()
+        if not item.get('tweet_url') and item.get('user_name') and item.get('tweet_id'):
+            user_name = item.get('user_name')
+            tweet_id = item.get('tweet_id')
+            item['tweet_url'] = f'https://twitter.com/{user_name}/status/{tweet_id}'
+        item['captured_by'] = spider.name
         return item
