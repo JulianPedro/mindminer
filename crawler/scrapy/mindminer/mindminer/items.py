@@ -3,10 +3,22 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy import Item, Field
 
 
-class MindminerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class Tweet(Item):
+    tweet_id = Field()
+    tweet_text = Field()
+    tweet_date = Field()
+    tweet_source = Field()
+    tweet_url = Field()
+    user_id = Field()
+    user_name = Field()
+    user_photo = Field()
+    hashtag = Field()
+    discover_date = Field()
+    analysis_date = Field()
+    analysis_result = Field()
+    positive_result = Field()
+    negative_result = Field()
+    captured_by = Field()

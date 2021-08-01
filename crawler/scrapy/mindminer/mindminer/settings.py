@@ -6,6 +6,8 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+from shutil import which
 
 BOT_NAME = 'mindminer'
 
@@ -17,7 +19,7 @@ NEWSPIDER_MODULE = 'mindminer.spiders'
 #USER_AGENT = 'mindminer (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -50,9 +52,13 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'mindminer.middlewares.MindminerDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
+    'scrapy_fake_useragent.middleware.RetryUserAgentMiddleware': 401
+}
+
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -62,9 +68,17 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'mindminer.pipelines.MindminerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'mindminer.pipelines.DataPipeline': 200,
+    'mindminer.pipelines.MongoDBPipeline': 300,
+}
+
+MONGODB_SERVER = os.environ.get('MONGO_HOST')
+MONGODB_PORT = int(os.environ.get('MONGO_PORT'))
+MONGODB_USERNAME = os.environ.get('MONGO_INITDB_ROOT_USERNAME')
+MONGODB_PASSWORD = os.environ.get('MONGO_INITDB_ROOT_PASSWORD')
+MONGODB_DB = os.environ.get('MONGO_INITDB_DATABASE')
+MONGODB_COLLECTION = os.environ.get('MONGO_COLLECTION')
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -86,3 +100,8 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+SELENIUM_DRIVER_NAME = 'firefox'
+SELENIUM_BROWSER_EXECUTABLE_PATH = which('firefox')
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
+SELENIUM_DRIVER_ARGUMENTS = ['-headless']
