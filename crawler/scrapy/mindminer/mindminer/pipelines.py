@@ -42,4 +42,8 @@ class DataPipeline:
             tweet_id = item.get('tweet_id')
             item['tweet_url'] = f'https://twitter.com/{user_name}/status/{tweet_id}'
         item['captured_by'] = spider.name
+        item['analysis_date'] = None
+        item['analysis_result'] = None
+        item['positive_result'] = None
+        item['negative_result'] = None
         return item

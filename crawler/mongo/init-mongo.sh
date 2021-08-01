@@ -1,6 +1,6 @@
 mongo -- "$MONGO_INITDB_DATABASE" << EOF
     db.createCollection('$MONGO_COLLECTION');
-    db.$MONGO_COLLECTION.createIndex({id: 1}, unique=true);
+    db.$MONGO_COLLECTION.createIndex({tweet_id: 1}, unique=true);
 EOF
 
 if [ "$MODE" = "production" ]; then
