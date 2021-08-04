@@ -16,16 +16,24 @@ export default {
 
 <style scoped>
 .home__main {
-  @apply flex-1 p-1;
+  @apply flex-1 p-2;
+}
+
+.main__subject {
+  @apply py-4 rounded-md;
 }
 
 @screen md {
   .home__main {
-    @apply p-2;
+    @apply py-8 px-8;
   }
 }
 
 .main__subject {
-  @apply w-full h-64 bg-gray-500;
+  @apply w-full h-64 bg-tertiary;
+}
+
+.main__help {
+  @apply mt-4;
 }
 </style>

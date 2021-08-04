@@ -63,8 +63,10 @@ html {
 
 .layout__page {
   @apply flex flex-col min-h-0 flex-1 p-2;
+}
 
-  @screen md {
+@screen md {
+  .layout__page {
     @apply px-6 py-4;
   }
 }
