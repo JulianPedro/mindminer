@@ -11,11 +11,13 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "@chenfengyuan/vue-carousel": "^1.0.6",
     "@nuxtjs/axios": "^5.13.1",
     "autoprefixer": "^10.3.1",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "tailwindcss": "^2.2.7"
+    "tailwindcss": "^2.2.7",
+    "vue-feather-icons": "^5.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",

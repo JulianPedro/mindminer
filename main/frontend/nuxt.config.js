@@ -23,7 +23,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ["@plugins/vueCarousel.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -46,5 +46,9 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config) {
+      config.resolve.alias.vue = "vue/dist/vue.common";
+    },
+  },
 };

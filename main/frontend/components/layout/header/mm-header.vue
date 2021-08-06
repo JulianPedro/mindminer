@@ -1,6 +1,10 @@
 <template>
   <header class="header">
-    <span class="text-white text-lg font-medium">MindMiner</span>
+    <nuxt-link to="/">
+      <span class="text-white text-lg font-medium cursor-pointer">
+        MindMiner
+      </span>
+    </nuxt-link>
     <mm-hearder-search-bar />
   </header>
 </template>

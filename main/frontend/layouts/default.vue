@@ -29,10 +29,6 @@ html {
   box-sizing: border-box;
 }
 
-:hover::-webkit-scrollbar-thumb {
-  @apply bg-primary;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
