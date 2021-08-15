@@ -1,5 +1,5 @@
 <template>
-  <div class="subject">
+  <div class="subject" @click="openSubject">
     <div class="subject__image">
       <img :src="subject.image" />
       <span class="subject__title">{{ subject.name }}</span>
@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       subject: {
+        id: 0,
         name: "Teste nome do assunto assunto 2 ahahsjas",
         summary:
           "Teste nome do assunto assunto 2 ahahsjas sjahsjhajs bsjabsjab shajhsj",
@@ -23,6 +24,11 @@ export default {
           "https://www.redebrasilatual.com.br/wp-content/uploads/2021/08/lula-lider-pesquisa.jpg",
       },
     };
+  },
+  methods: {
+    openSubject() {
+      this.$router.push(`/details/${this.subject.id}`);
+    },
   },
 };
 </script>
