@@ -10,6 +10,7 @@ import pymongo
 from pymongo.errors import DuplicateKeyError
 
 from scrapy.utils.project import get_project_settings
+from mindminer.text_classification.classify import Classify
 
 
 class MongoDBPipeline:
@@ -35,15 +36,21 @@ class MongoDBPipeline:
 class DataPipeline:
     """ Pipeline to add metadata in items. """
 
+    def __init__(self):
+        self.classify = Classify(model_json='mindminer/text_classification/model/model.json',
+                                 model_hdf5='mindminer/text_classification/model/model.h5',
+                                 tokenizer_json='mindminer/text_classification/tokenizer/tokenizer.json',
+                                 sentiment_file='mindminer/text_classification/labels/label.pkl')
+
     def process_item(self, item, spider):
         item['discover_date'] = datetime.datetime.now()
         if not item.get('tweet_url') and item.get('user_name') and item.get('tweet_id'):
             user_name = item.get('user_name')
             tweet_id = item.get('tweet_id')
             item['tweet_url'] = f'https://twitter.com/{user_name}/status/{tweet_id}'
+        analysis, score = self.classify.classify(item.get('tweet_text'))
         item['captured_by'] = spider.name
-        item['analysis_date'] = None
-        item['analysis_result'] = None
-        item['positive_result'] = None
-        item['negative_result'] = None
+        item['analysis_date'] = datetime.datetime.now()
+        item['analysis_result'] = analysis
+        item['score_result'] = score
         return item
