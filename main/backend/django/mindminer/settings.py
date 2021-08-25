@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-
+from celery.schedules import crontab
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,11 +43,13 @@ DEFAULT_APPS = [
 ]
 
 LOCAL_APPS = [
-    'subject'
+    'subject',
+    'news'
 ]
 
 EXTERNAL_APPS = [
-    'rest_framework'
+    'rest_framework',
+    'django_celery_beat'
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + EXTERNAL_APPS
@@ -81,6 +83,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mindminer.wsgi.application'
+
+# Celery
+
+CELERY_BROKER_URL = f'redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}'
+CELERY_RESULT_BACKEND = f'redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Campo_Grande'
+CELERY_TASK_TRACK_STARTED = True
 
 
 # Database
@@ -143,3 +155,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'mindminer/staticfiles')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Secrets
+
+NEWS_API_KEY = os.getenv('NEWS_API_KEY')
+
+# Cron Tasks
+
+CELERY_BEAT_SCHEDULE = {
+    'get_news': {
+        'task': 'news.tasks.get_news',
+        'schedule': crontab(minute=0, hour=0)
+    },
+}
