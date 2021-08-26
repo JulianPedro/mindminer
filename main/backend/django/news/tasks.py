@@ -22,7 +22,7 @@ def get_news():
             apikey = settings.NEWS_API_KEY
             try:
                 url = f'https://newsapi.org/v2/top-headlines?country=br&q={query}&from={yesterday}&' \
-                      f'sortBy=popularity&apiKey={apikey}'
+                      f'sortBy=popularity&category=general&apiKey={apikey}'
                 request = requests.get(url)
                 if request.ok:
                     data = request.json()
@@ -32,6 +32,8 @@ def get_news():
                         description = article['description']
                         source_url = article['url']
                         image_url = article['urlToImage']
+                        if not image_url:
+                            continue
                         published_at = parse_datetime(article['publishedAt'])
                         news, _ = News.objects.get_or_create(source_url=source_url, defaults={
                             'newspaper': newspaper, 'title': title, 'description': description,

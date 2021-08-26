@@ -28,7 +28,7 @@ echo "Statics collected"
 #python manage.py compress --force
 
 echo "Loading fixtures..."
-python3 manage.py loaddata mindminer/fixtures/*.json
+python3 manage.py loaddata **/fixtures/*.json
 echo "Fixtures loaded"
 
 echo "Starting Celery..."

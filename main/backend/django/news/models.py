@@ -8,9 +8,9 @@ class News(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     newspaper = models.CharField(verbose_name='Newspaper', max_length=200)  # Source
     title = models.CharField(verbose_name='Title', max_length=1000)
-    description = models.CharField(verbose_name='Description', max_length=1000)
-    source_url = models.URLField(verbose_name='Source URL')
-    image_url = models.URLField(verbose_name='Image URL')
+    description = models.CharField(verbose_name='Description', max_length=1000, null=True, blank=True)
+    source_url = models.URLField(verbose_name='Source URL', max_length=5000)
+    image_url = models.URLField(verbose_name='Image URL', max_length=5000)
     published_at = models.DateTimeField(verbose_name='Published Date')
 
     class Meta:
