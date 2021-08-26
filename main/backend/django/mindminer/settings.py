@@ -171,3 +171,6 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(minute=0, hour=0)
     },
 }
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
