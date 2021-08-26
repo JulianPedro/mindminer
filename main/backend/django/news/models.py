@@ -17,7 +17,7 @@ class News(models.Model):
         """ Meta Model Subject. """
         verbose_name = 'News'
         verbose_name_plural = 'News'
-        ordering = ['published_at']
+        ordering = ['-published_at']
 
     def __str__(self):
         return self.title

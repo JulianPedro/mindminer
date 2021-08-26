@@ -15,13 +15,12 @@ class SubjectViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """ Custom django get queryset. """
-        filter_hashtag = self.request.GET.get('hashtag', '')
-        order_by = self.request.GET.getlist('order_by', ['popularity', 'interaction'])
-        hashtag_list = filter_hashtag.split(',')
+        filter_hashtag = self.request.GET.getlist('hashtag', [])
+        order_by = self.request.GET.getlist('order_by', ['-popularity', '-interaction'])
         hashtag_list_q = Q()
-        for hashtag in hashtag_list:
+        for hashtag in filter_hashtag:
             hashtag_list_q.add(Q(hashtag=hashtag), Q.OR)
         new_queryset = Subject.objects.filter(hashtag_list_q, no_data=False).order_by(*order_by)
-        if hashtag_list:
-            register_popular_subjects.delay(hashtag_list)
+        if filter_hashtag:
+            register_popular_subjects.delay(filter_hashtag)
         return new_queryset
