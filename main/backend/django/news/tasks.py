@@ -1,3 +1,4 @@
+import logging
 import requests
 from datetime import datetime, timedelta
 
@@ -8,11 +9,13 @@ from mindminer.celery import APP
 from subject.models import Subject
 from news.models import News
 
+LOGGER = logging.getLogger('news.tasks')
+
 
 @APP.task
 def get_news():
     """ Get news from API. """
-    subjects = Subject.objects.filter(no_data=False).order_by('popularity', 'interaction')
+    subjects = Subject.objects.filter(no_data=False).order_by('popularity')
     if subjects.exists():
         subjects = subjects[:10]  # Get first 10 objects
         for subject in subjects:
@@ -39,4 +42,6 @@ def get_news():
                             'newspaper': newspaper, 'title': title, 'description': description,
                             'image_url': image_url, 'published_at': published_at})
             except requests.exceptions.RequestException:
-                continue
+                LOGGER.exception('Request API error')
+            except Exception:
+                LOGGER.exception('Error catching a news')

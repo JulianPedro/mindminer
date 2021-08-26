@@ -3,7 +3,7 @@ from datetime import datetime
 from django.test import TestCase
 
 from subject.tests.factories.subject import SubjectFactory
-from subject.tests.factories.history import HistoryFactory
+from subject.tests.factories.timeline import TimelineFactory
 
 
 class SubjectTest(TestCase):
@@ -18,14 +18,14 @@ class SubjectTest(TestCase):
         self.assertEquals(str(self.subject), str(self.subject.hashtag))
 
 
-class HistoryTest(TestCase):
-    """ History Test """
+class TimelineTest(TestCase):
+    """ Timeline Test """
 
     @classmethod
     def setUpTestData(cls):
         """ Setup Test Data """
-        cls.history = HistoryFactory()
+        cls.timeline = TimelineFactory()
 
     def test_create_subject(self):
-        self.assertEquals(str(self.history),
-                          f'{self.history.subject} - {datetime.strftime(self.history.date, "%d/%m/%Y %H:%M:%S")}')
+        self.assertEquals(str(self.timeline),
+                          f'{self.timeline.subject} - {datetime.strftime(self.timeline.date, "%d/%m/%Y %H:%M:%S")}')

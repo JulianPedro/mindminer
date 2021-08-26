@@ -9,7 +9,6 @@ class SubjectFactory(factory.django.DjangoModelFactory):
     publication_date = factory.Faker('date_time', tzinfo=timezone.get_current_timezone())
     registration_date = factory.Faker('date_time', tzinfo=timezone.get_current_timezone())
     popularity = factory.Faker('random_number')
-    interaction = factory.Faker('random_number')
 
     class Meta:
         """ Subject Meta Factory """
