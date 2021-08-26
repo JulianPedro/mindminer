@@ -18,7 +18,7 @@ class Subject(models.Model):
         """ Meta Model Subject. """
         verbose_name = 'Subject'
         verbose_name_plural = 'Subjects'
-        ordering = ['popularity', 'interaction']
+        ordering = ['-popularity', '-interaction']
 
     def __str__(self):
         return self.hashtag
@@ -36,7 +36,7 @@ class History(models.Model):
         """ Meta Model History. """
         verbose_name = 'History'
         verbose_name_plural = 'Histories'
-        ordering = ['date']
+        ordering = ['-date']
 
     def __str__(self):
         return f'{self.subject} - {datetime.strftime(self.date, "%d/%m/%Y %H:%M:%S")}'
