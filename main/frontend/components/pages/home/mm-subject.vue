@@ -1,11 +1,11 @@
 <template>
   <div class="subject" @click="openSubject">
     <div class="subject__image">
-      <img :src="subject.image" />
-      <span class="subject__title">{{ subject.name }}</span>
+      <img alt="capa" :src="subject.image_url" />
+      <span class="subject__title">{{ subject.title }}</span>
     </div>
-    <div class="subject__summary">
-      {{ subject.summary }}
+    <div class="subject__description">
+      {{ subject.description }}
     </div>
   </div>
 </template>
@@ -13,17 +13,11 @@
 <script>
 export default {
   name: "MmSubject",
-  data() {
-    return {
-      subject: {
-        id: 0,
-        name: "Teste nome do assunto assunto 2 ahahsjas",
-        summary:
-          "Teste nome do assunto assunto 2 ahahsjas sjahsjhajs bsjabsjab shajhsj",
-        image:
-          "https://www.redebrasilatual.com.br/wp-content/uploads/2021/08/lula-lider-pesquisa.jpg",
-      },
-    };
+  props: {
+    subject: {
+      type: Object,
+      required: true,
+    },
   },
   methods: {
     openSubject() {
@@ -46,11 +40,11 @@ export default {
   @apply rounded-tl rounded-tr shadow w-full h-24 object-cover;
 }
 
-.subject__summary {
-  @apply text-secondary font-light text-base max-h-16;
+.subject__description {
+  @apply text-secondary font-light text-base max-h-16 truncate;
 }
 
 .subject__title {
-  @apply absolute bottom-0 left-0 text-white text-base font-light ml-2 truncate w-full;
+  @apply absolute truncate bottom-0 left-0 text-white text-base font-light ml-2 truncate w-full;
 }
 </style>

@@ -2,9 +2,11 @@
   <aside class="home_sidebar sidebar">
     <div class="sidebar__title">Mais populares <mm-sort /></div>
     <div class="sidebar__subjects">
-      <mm-subject />
-      <mm-subject />
-      <mm-subject />
+      <mm-subject
+        v-for="subject in subjects"
+        :key="subject.id"
+        :subject="subject"
+      />
     </div>
   </aside>
 </template>
@@ -15,6 +17,12 @@ import MmSort from "@/components/global/mm-sort";
 export default {
   name: "MmHomeSidebar",
   components: { MmSort, MmSubject },
+  props: {
+    subjects: {
+      required: true,
+      type: Array,
+    },
+  },
 };
 </script>
 

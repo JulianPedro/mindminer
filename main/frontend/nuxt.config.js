@@ -23,7 +23,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@plugins/vueCarousel.js", "@plugins/moment", "@plugins/VueTable"],
+  plugins: ["@plugins/vueCarousel.js", "@plugins/moment"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -43,7 +43,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseUrl: "http://localhost:8000/api",
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

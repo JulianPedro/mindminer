@@ -4,7 +4,7 @@
       <mm-carousel
         indicator-type="disc"
         style="height: 100%"
-        :data="trendsSubjects"
+        :data="subjectsImages"
       />
     </div>
     <div class="main__help help">
@@ -17,14 +17,28 @@
 <script>
 export default {
   name: "MmHomeMain",
-  data() {
-    return {
-      trendsSubjects: [
-        `<img class="w-full" src="https://www.redebrasilatual.com.br/wp-content/uploads/2021/08/lula-lider-pesquisa.jpg" />`,
-        `<img class="w-full" src="https://www.novoeste.com/uploads/image/img_brasil247_estados-rejeitam-cloroquina-doada-trump.jpg" />`,
-        `<img class="w-full" src="https://revistacult.uol.com.br/home/wp-content/uploads/2021/05/ciro-gomes-foto-jarbas-oliveira.png" />`,
-      ],
-    };
+  props: {
+    subjects: {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    subjectsImages() {
+      return this.subjects.map((subject) => this.makeSubject(subject));
+    },
+  },
+  methods: {
+    makeSubject(subject) {
+      return `
+        <div class="relative">
+            <div class="font-medium text-white p-2 absolute text-xl bottom-0 mb-8">
+                ${subject.title}
+            </div>
+            <img alt="capa" class="w-full h-96" src="${subject.image_url}" />
+        </div>
+      `;
+    },
   },
 };
 </script>
