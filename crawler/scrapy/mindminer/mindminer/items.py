@@ -18,7 +18,5 @@ class Tweet(Item):
     hashtag = Field()
     discover_date = Field()
     analysis_date = Field()
-    analysis_result = Field()
-    positive_result = Field()
-    negative_result = Field()
+    score_result = Field()
     captured_by = Field()

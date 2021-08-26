@@ -25,11 +25,20 @@ venv
 .env.development.local
 .env.test.local
 .env.production.local
+.mypy_cache
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
 # DONT REMOVE THIS EXCEPTION
 
 crawler/env/twitter_secret.env
+crawler/scrapy/mindminer/mindminer/text_classification/labels/label.pkl
+crawler/scrapy/mindminer/mindminer/text_classification/model/model.h5
+crawler/scrapy/mindminer/mindminer/text_classification/model/model.json
+crawler/scrapy/mindminer/mindminer/text_classification/tokenizer/tokenizer.json
+archive
+
+main/backend/env/api_keys.env

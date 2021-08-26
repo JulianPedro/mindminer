@@ -11,6 +11,5 @@
   "discover_date": null,
   "analysis_date": null,
   "analysis_result": null,
-  "positive_result": null,
-  "negative_result": null
+  "score_result": null
 }

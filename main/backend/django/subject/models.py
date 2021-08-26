@@ -5,16 +5,17 @@ from django.db import models
 
 
 class Subject(models.Model):
-    """ Subject Model """
+    """ Subject Model. """
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     hashtag = models.CharField(verbose_name='Hashtag', max_length=200)
-    publication_date = models.DateTimeField(verbose_name='Publication Date')
+    publication_date = models.DateTimeField(verbose_name='Publication Date', null=True, blank=True)
     registration_date = models.DateTimeField(verbose_name='Registration Date', auto_now_add=True)
-    popularity = models.IntegerField(verbose_name='Popularity')
-    interaction = models.IntegerField(verbose_name='Interaction')
+    popularity = models.IntegerField(verbose_name='Popularity', default=0)
+    interaction = models.IntegerField(verbose_name='Interaction', default=0)
+    no_data = models.BooleanField(verbose_name='No data found', default=True)
 
     class Meta:
-        """ Meta Model Subject """
+        """ Meta Model Subject. """
         verbose_name = 'Subject'
         verbose_name_plural = 'Subjects'
         ordering = ['popularity', 'interaction']
@@ -24,7 +25,7 @@ class Subject(models.Model):
 
 
 class History(models.Model):
-    """ History Model """
+    """ History Model. """
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     subject = models.ForeignKey('subject.Subject', verbose_name='Subject', on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name='Date')
@@ -32,7 +33,7 @@ class History(models.Model):
     disapproval_percentage = models.FloatField(verbose_name='Disapproval Percentage')
 
     class Meta:
-        """ Meta Model History """
+        """ Meta Model History. """
         verbose_name = 'History'
         verbose_name_plural = 'Histories'
         ordering = ['date']

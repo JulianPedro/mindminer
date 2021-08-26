@@ -9,6 +9,12 @@ then
     echo "PostgreSQL started"
 fi
 
+until nc -z "$REDIS_HOST" "$REDIS_PORT" 2>&1; do
+    echo "Redis is unavailable - sleeping"
+    sleep 1
+done
+echo "Redis is up!"
+
 echo "Init migration load ..."
 python manage.py migrate --fake-initial
 echo "Migrations apply"
@@ -22,7 +28,14 @@ echo "Statics collected"
 #python manage.py compress --force
 
 echo "Loading fixtures..."
-python3 manage.py loaddata mindminer/fixtures/*.json
+python3 manage.py loaddata **/fixtures/*.json
 echo "Fixtures loaded"
+
+echo "Starting Celery..."
+celery -A mindminer beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler &
+
+echo "\tStarting workers (1 worker, 3 if necessary)..."
+celery -A mindminer worker -l info --autoscale=3,1 &
+echo "Celery started!"
 
 exec "$@"

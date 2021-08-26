@@ -1,0 +1,218 @@
+[
+{
+  "model": "news.news",
+  "pk": "026adbe3-b3df-4529-8947-07316e50f096",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "Quem pode tomar a terceira dose ou reforço da vacina contra a Covid? O que são os imunossuprimidos? - G1",
+    "description": "Vacinação é indicada para idosos com mais de 70 anos e imunossuprimidos. Pasta informou que a imunização deverá ser feita, preferencialmente, com uma dose da Pfizer, ou de maneira alternativa, com a vacina de vetor viral da Janssen ou da AstraZeneca.",
+    "source_url": "https://g1.globo.com/bemestar/coronavirus/noticia/2021/08/25/quem-pode-tomar-a-terceira-dose-ou-reforco-da-vacina-contra-a-covid.ghtml",
+    "image_url": "https://s2.glbimg.com/yyWmE5vfjWA7i5NbhVz3eL11EYE=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/J/y/ZyCtzZQXA2GxWnAL6sAQ/vacinacao-covid.jpg",
+    "published_at": "2021-08-25T14:12:57Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "1c2ba996-3b4b-4e11-a176-849382c2e513",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "Molécula em veneno de cobra inibe o novo coronavírus, aponta pesquisa da Unesp de Araraquara - G1",
+    "description": "Após testes em laboratório, cientistas observaram que a molécula extraída do veneno do réptil inibiu em 75% a capacidade do vírus se multiplicar em células de macaco.",
+    "source_url": "https://g1.globo.com/sp/sao-carlos-regiao/noticia/2021/08/25/pesquisa-da-unesp-de-araraquara-identifica-molecula-em-veneno-de-cobra-que-inibe-o-coronavirus.ghtml",
+    "image_url": "https://s2.glbimg.com/9tXcW1zUOKt_jKIEWnzz9XY2wKw=/1200x/smart/filters:cover():strip_icc()/s01.video.glbimg.com/x720/9799156.jpg",
+    "published_at": "2021-08-25T16:13:10Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "298602f5-5ca6-43c3-8288-ab0f5b60df79",
+  "fields": {
+    "newspaper": "BBC News",
+    "title": "Execuções sumárias e restrições às mulheres: o que diz primeiro relatório da ONU sobre nova era Talebã no Afeganistão - BBC News Brasil",
+    "description": "Michelle Bachelet indicou que a ONU tem conhecimento de eventos que variam desde a \"restrições aos direitos das mulheres\" a \"execuções sumárias\".",
+    "source_url": "https://www.bbc.com/portuguese/internacional-58330742",
+    "image_url": "https://ichef.bbci.co.uk/news/1024/branded_portuguese/AD87/production/_120232444_069357203-1.jpg",
+    "published_at": "2021-08-25T14:28:10Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "2a26c1b1-b847-487c-9ebb-9f26a1ea8cf9",
+  "fields": {
+    "newspaper": "R7.com",
+    "title": "Senadores e Lira vão ao STF apoiar Moraes e discutir crise política - HORA 7",
+    "description": "Na semana passada, o presidente Jair Bolsonaro encaminhou ao Senado um pedido de impeachment contra o ministro do Supremo",
+    "source_url": "http://noticias.r7.com/brasilia/senadores-e-lira-vao-ao-stf-apoiar-moraes-e-discutir-crise-politica-24082021",
+    "image_url": "https://img.r7.com/images/agencia-senado-cpi-pandemia-comissao-parlamentar-mista-de-inquerito-da-pandemia-cpi-1500-19082021144326477?dimensions=771x420&",
+    "published_at": "2021-08-24T20:29:00Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "4c134d07-c3da-4a82-8098-19077c5083ce",
+  "fields": {
+    "newspaper": "Canaltech.com.br",
+    "title": "Variante Delta pode adoecer gravemente as crianças; saiba como protegê-las - Canaltech",
+    "description": "Com maior circulação da variante Delta, casos da COVID-19 aumentam nos EUA em crianças. Quandro reforça importância da vacinação do público entre 12 e 17 anos",
+    "source_url": "https://canaltech.com.br/saude/variante-delta-pode-adoecer-gravemente-as-criancas-saiba-como-protege-las-193678/",
+    "image_url": "https://t.ctcdn.com.br/XpyGZh8DcLdfcnRcA1eVoccVHUE=/1400x788/smart/i476559.jpeg",
+    "published_at": "2021-08-25T17:40:00Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "5714cc29-6f4b-4664-a3ff-116fb3987963",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "Presidente de fiadora da Precisa diz que empresa é 'pequena' e tem R$ 7,5 bi; 'Repete aí', ironiza senador - G1",
+    "description": "Roberto Pereira deu depoimento à CPI da Covid nesta quarta-feira. Comissão quer saber se há alguma irregularidade na empresa que ele preside, como, por exemplo, um sócio oculto.",
+    "source_url": "https://g1.globo.com/politica/cpi-da-covid/noticia/2021/08/25/presidente-de-fiadora-da-precisa-diz-que-sua-empresa-e-pequena-e-tem-r-75-bi-repete-ai-ironiza-senador.ghtml",
+    "image_url": "https://s2.glbimg.com/v6Vr4E6RtotJyDidR8ggRA0-N4s=/1200x/smart/filters:cover():strip_icc()/s04.video.glbimg.com/x720/9799011.jpg",
+    "published_at": "2021-08-25T17:16:05Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "72145ef8-c7ad-4e30-afbb-2b7e9fb05ade",
+  "fields": {
+    "newspaper": "Uol.com.br",
+    "title": "PF prende empresário suspeito de fraudes bilionárias com bitcoins, diz TV - UOL Notícias",
+    "description": "Glaidson Acácio dos Santos, dono da GAS Consultoria Bitcoin, foi preso no início da manhã de hoje no Rio de Janeiro pela Polícia Federal em uma operação do MPF (Ministério Público Federal) e da Receita Federal. O empresário é suspeito de envolvimento em u",
+    "source_url": "https://economia.uol.com.br/noticias/redacao/2021/08/25/pf-prende-empresario-suspeito-de-fraudes-bilionarias-com-bitcoins-diz-tv.htm",
+    "image_url": "https://conteudo.imguol.com.br/c/noticias/a7/2021/08/25/25ago2021---dono-da-gas-consultoria-glaidson-acacio-dos-santos-foi-detido-hoje-pela-pf-1629895649852_v2_615x300.jpg",
+    "published_at": "2021-08-25T12:48:59Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "731c9d09-af00-46c1-af1b-c5f98b9a5304",
+  "fields": {
+    "newspaper": "Yahoo Entertainment",
+    "title": "Variante Delta pode adoecer gravemente as crianças; saiba como protegê-las - Yahoo Financas Brasil",
+    "description": "Com maior circulação da variante Delta, casos da COVID-19 aumentam nos EUA em crianças. Quandro reforça importância da vacinação do público entre 12 e 17...",
+    "source_url": "https://br.financas.yahoo.com/noticias/variante-delta-pode-adoecer-gravemente-174000208.html",
+    "image_url": "https://s.yimg.com/ny/api/res/1.2/88GPcdynQNyCLi_Gl712tA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU-/https://s.yimg.com/uu/api/res/1.2/qZ7OSjDk3d8leEy8UlUFsA--~B/aD03ODg7dz0xNDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/pt/canal_tech_990/ce02cd73e67edc1de6409a1c7d0bdc56",
+    "published_at": "2021-08-25T17:40:00Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "88a5a454-f873-4954-86ef-9be2af174443",
+  "fields": {
+    "newspaper": "Ebc.com.br",
+    "title": "Proteção de vacinas contra covid diminui após 6 meses, mostra estudo - Agência Brasil",
+    "description": "No caso da vacina Pfizer/BioNTech, por exemplo, a eficácia um mês após a segunda dose, que é de 88%, cai para 74% passados cinco ou seis meses.",
+    "source_url": "https://agenciabrasil.ebc.com.br/internacional/noticia/2021-08/protecao-de-vacinas-contra-covid-diminui-apos-6-meses-mostra-estudo",
+    "image_url": "https://imagens.ebc.com.br/10Z4S6aeRp8Ifl0n8Ofi5wMq4O4=/1600x800/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/vacinacao-parque-da-cidade_mcamgo_abr_180220211818-4.jpg?itok=aHiYtJho",
+    "published_at": "2021-08-25T13:41:00Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "95544667-2d8f-445c-94f2-2edd6bb455a2",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "Fachin arquiva ação de Bolsonaro que tentava impedir STF de abrir inquérito por iniciativa própria - G1",
+    "description": "Presidente e AGU questionaram artigo do regimento do STF que trata do tema e baseou, por exemplo, o inquérito das fake news. Fachin diz que tema já foi debatido e pacificado em 2020.",
+    "source_url": "https://g1.globo.com/politica/noticia/2021/08/25/fachin-arquiva-acao-de-bolsonaro-que-tentava-impedir-stf-de-abrir-inquerito-por-iniciativa-propria.ghtml",
+    "image_url": "https://s2.glbimg.com/qWUnEzU5068-QVBGLQB8QZOyGE8=/1200x/smart/filters:cover():strip_icc()/s02.video.glbimg.com/x720/9801265.jpg",
+    "published_at": "2021-08-25T22:03:10Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "b25cf9d7-5a1f-4043-87ff-29c24a7f6a01",
+  "fields": {
+    "newspaper": "Olhardigital.com.br",
+    "title": "Xiaomi vai aposentar a marca “Mi” de celulares - Olhar Digital",
+    "description": "A Xiaomi confirmou que vai aposentar a nomenclatura Mi para os seus smartphones. Aparelhos passarÃ£o a utilizar o nome da empresa",
+    "source_url": "https://olhardigital.com.br/2021/08/24/reviews/xiaomi-vai-aposentar-a-marca-mi-de-celulares/",
+    "image_url": "https://img.olhardigital.com.br/wp-content/uploads/2021/08/xiaomi-mi-1-e1629807496452.jpg",
+    "published_at": "2021-08-24T12:20:00Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "b4673c4f-a1c0-432d-9151-d4b01dacf4d3",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "Plenário do Senado aprova novo mandato de 2 anos para Augusto Aras como procurador-geral - G1",
+    "description": "Indicado por Jair Bolsonaro foi aprovado por 55 votos a 10 e uma abstenção. Antes, Aras passou por seis horas de sabatina na Comissão de Constituição e Justiça do Senado.",
+    "source_url": "https://g1.globo.com/politica/noticia/2021/08/24/plenario-do-senado-aprova-novo-mandato-de-dois-anos-augusto-aras-como-procurador-geral.ghtml",
+    "image_url": "https://s2.glbimg.com/DYLXczZ6EMdtY4I3ljgIDXX2GL8=/1200x/smart/filters:cover():strip_icc()/s01.video.glbimg.com/x720/9797736.jpg",
+    "published_at": "2021-08-24T23:53:08Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "bd6551cd-25db-42c0-8cb9-c110b4068c86",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "De garçom a milionário: saiba quem é Glaidson, preso por suspeita de 'pirâmide' no RJ - G1",
+    "description": "Em 2014, ele era garçom em Búzios e recebia R$ 800. Nesta quarta, foi preso em mansão na Barra, com R$ 20 milhões em espécie, além de barras de ouro, um Porsche e um BMW. Segundo a investigação, ele movimentava bilhões, mas não aplicava em bitcoins, como prom…",
+    "source_url": "https://g1.globo.com/rj/rio-de-janeiro/noticia/2021/08/25/de-garcom-a-milionario-saiba-quem-e-glaidson-preso-por-suspeito-de-piramide-no-rj.ghtml",
+    "image_url": "https://s2.glbimg.com/PcRb1AMYQuGSwhL81FjRg4Mt3lA=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/m/h/BZye6KTgei01I3m4Ioew/25pf0.jpg",
+    "published_at": "2021-08-25T14:59:57Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "c2b11261-202e-432c-bda6-764a626e8297",
+  "fields": {
+    "newspaper": "Senado.leg.br",
+    "title": "Para senadores da CPI, diretor da FIB Bank deu o depoimento 'mais escabroso' - Agência Senado",
+    "description": "\"Escabroso\", \"contraditório\", \"demolidor\" foram alguns dos adjetivos usados pelos senadores para qualificar o depoimento desta quarta-feira (25) na CPI da Pandemia. O depoente foi Roberto Pereira Ramos Júnior, diretor-presidente da FIB Bank — empresa apresent…",
+    "source_url": "https://www12.senado.leg.br/noticias/materias/2021/08/25/para-senadores-da-cpi-diretor-da-fib-bank-deu-o-depoimento-mais-escabroso",
+    "image_url": "https://www12.senado.leg.br/noticias/materias/2021/08/25/para-senadores-da-cpi-diretor-da-fib-bank-deu-o-depoimento-mais-escabroso/20210825_01251e.jpg",
+    "published_at": "2021-08-25T17:15:20Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "c3a3b678-c237-4c28-91a4-41269f6f4959",
+  "fields": {
+    "newspaper": "Uol.com.br",
+    "title": "Dólar tem 4ª queda e vai a R$ 5,211, menor valor em 2 semanas; Bolsa sobe - UOL",
+    "description": "O dólar chegou hoje a sua quarta queda consecutiva, esta de 0,97%, e fechou o dia cotado a R$ 5,211 na venda, o menor valor em duas semanas, desde 10 de agosto (R$ 5,197). É também a primeira vez em mais de dois meses que a moeda americana acumula uma seq",
+    "source_url": "https://economia.uol.com.br/cotacoes/noticias/redacao/2021/08/25/fechamento-dolar-ibovespa-25-agosto.htm",
+    "image_url": "https://conteudo.imguol.com.br/c/noticias/e3/2021/04/15/22fev2021---bolsa-de-valores-painel-eletronico-mostra-desempenho-das-acoes-do-ibovespa-na-b3-em-sao-paulo-1618520498166_v2_615x300.jpg",
+    "published_at": "2021-08-25T20:24:11Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "d4044c55-c767-4483-8a0a-1887ab1a611c",
+  "fields": {
+    "newspaper": "Globo",
+    "title": "Aplicação das 1ª e 2ª doses contra Covid-19 segue na quinta-feira em Salvador; veja esquema e pontos de vacinação - G1",
+    "description": "Aplicação da vacina na quinta-feira (26) segue para os adolescentes com idade entre 12 e 17 anos que possuam algum tipo de comorbidade e/ou deficiência permanente. Gestantes e puérperas também podem se vacinar.",
+    "source_url": "https://g1.globo.com/ba/bahia/noticia/2021/08/25/imunizacao-contra-covid-19-segue-para-1a-e-2a-doses-na-quinta-feira-em-salvador-veja-esquema-e-pontos-de-vacinacao.ghtml",
+    "image_url": "https://s2.glbimg.com/G-Cj_O4PM_R6083qYGcbsvhlBSY=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2021/r/G/HCjLAxR2aKJOHtPbyJCA/a1.jpg",
+    "published_at": "2021-08-25T21:19:03Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "f25339b5-391d-449b-bec9-eacd97117607",
+  "fields": {
+    "newspaper": "Uol.com.br",
+    "title": "Resposta imune à CoronaVac é menos intensa em homens acima de 55 anos - VivaBem",
+    "description": "A resposta ao vírus da covid-19 em pessoas que tomaram as duas doses da vacina CoronaVac é bem menos intensa na maior parte dos homens com mais de 55 anos de idade, apontam resultados preliminares de pesquisa coordenada pela Faculdade de Medicina da USP.A",
+    "source_url": "https://www.uol.com.br/vivabem/noticias/redacao/2021/08/25/resposta-imune-a-coronavac-e-menos-intensa-em-homens-acima-de-55-anos.htm",
+    "image_url": "https://conteudo.imguol.com.br/c/entretenimento/c7/2021/05/06/vacina-homem-tomando-vacina-vacinacao-1620319068281_v2_615x300.jpg",
+    "published_at": "2021-08-25T14:36:44Z"
+  }
+},
+{
+  "model": "news.news",
+  "pk": "f37b50c4-3e1b-40bc-a402-8e4edf8c01a1",
+  "fields": {
+    "newspaper": "Gazetadopovo.com.br",
+    "title": "Pacheco rejeita pedido de impeachment de Moraes feito por Bolsonaro - Gazeta do Povo",
+    "description": "Presidente do Senado, Rodrigo Pacheco, decidiu arquivar o pedido de impeachment contra o ministro do STF Alexandre de Moraes feito por Jair Bolsonaro",
+    "source_url": "https://www.gazetadopovo.com.br/republica/pacheco-rejeita-pedido-de-impeachment-de-moraes-senado/",
+    "image_url": "https://media.gazetadopovo.com.br/2021/08/25184559/51402686438_9f8a6cb3e9_b-660x372.jpg",
+    "published_at": "2021-08-25T21:46:00Z"
+  }
+}
+]
