@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class Classify:
+    """ This class has all methods to load and classify sentiments texts. """
     def __init__(self, *args, **kwargs):
         model_json = kwargs.get('model_json')
         model_hdf5 = kwargs.get('model_hdf5')
@@ -22,6 +23,7 @@ class Classify:
 
     @staticmethod
     def load_json_model(model_json, model_hdf5):
+        """ Load json model. """
         json_file = open(model_json, 'r')
         loaded_model_json = json_file.read()
         json_file.close()
@@ -32,6 +34,7 @@ class Classify:
 
     @staticmethod
     def load_json_tokenizer(tokenizer_json):
+        """ Load json tokenizer. """
         json_file = open(tokenizer_json, 'r')
         loaded_tokenizer_json = json_file.read()
         data = json.loads(loaded_tokenizer_json)
@@ -41,10 +44,12 @@ class Classify:
 
     @staticmethod
     def load_sentiment_labels(sentiment_file):
+        """ Load sentiment labels. """
         pkl_file = open(sentiment_file, 'rb')
         return pickle.load(pkl_file)
 
     def classify(self, text):
+        """ Classify sentiment text. """
         texts = self.tokenizer.texts_to_sequences([text])
         texts = pad_sequences(texts, maxlen=200)
         score = self.model.predict(texts)

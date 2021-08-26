@@ -40,3 +40,5 @@ crawler/scrapy/mindminer/mindminer/text_classification/model/model.h5
 crawler/scrapy/mindminer/mindminer/text_classification/model/model.json
 crawler/scrapy/mindminer/mindminer/text_classification/tokenizer/tokenizer.json
 archive
+
+main/backend/env/api_keys.env
