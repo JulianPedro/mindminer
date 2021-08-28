@@ -13,7 +13,11 @@
         </tr>
       </thead>
       <tbody class="table__body">
-        <tr v-for="subject in subjects" :key="`subject_${subject.id}`">
+        <tr
+          v-for="subject in subjects"
+          :key="`subject_${subject.id}`"
+          @click="openSubject"
+        >
           <td colspan="3">{{ subject.hashtag }}</td>
           <td colspan="1">{{ getTimelineSetInfo(subject, "interactions") }}</td>
           <td class="text-green-500" colspan="1">
@@ -111,6 +115,9 @@ export default {
       this.count = count;
       this.previous = previous;
       this.next = next;
+    },
+    openSubject(subject) {
+      this.$router.push({ path: `/details/${subject.id}` });
     },
   },
 };
