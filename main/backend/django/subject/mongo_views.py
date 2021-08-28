@@ -13,7 +13,13 @@ class TweetViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """ Custom get queryset. """
         search = self.request.GET.get('search', None)
+        date_from = self.request.GET.get('from', None)
+        date_to = self.request.GET.get('to', None)
         queryset = Tweet.objects.all()
         if search:
             queryset = queryset.filter(hashtag__icontains=search)
+        if date_from:
+            queryset = queryset.filter(tweet_date__gte=date_from)
+        if date_to:
+            queryset = queryset.filter(tweet_date__lte=date_to)
         return queryset
