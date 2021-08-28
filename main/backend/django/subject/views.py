@@ -1,26 +1,26 @@
-from django.db.models import Q
 from rest_framework import viewsets
+from rest_framework import filters
 
 from subject.models import Subject
 from subject.serializers import SubjectSerializer
-from subject.tasks import register_popular_subjects
+from subject.tasks import register_popular_subject
 
 
 class SubjectViewSet(viewsets.ModelViewSet):
     """ Subject Model View Set. """
-    queryset = Subject.objects.all()
+    queryset = Subject.objects.filter(no_data=False)
     serializer_class = SubjectSerializer
     http_method_names = ['get']
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['popularity']
+    ordering = ['-popularity']
     paginate_by = 10
 
     def get_queryset(self):
         """ Custom django get queryset. """
-        filter_hashtag = self.request.GET.getlist('hashtag', [])
-        order_by = self.request.GET.getlist('order_by', ['-popularity', '-interaction'])
-        hashtag_list_q = Q()
-        for hashtag in filter_hashtag:
-            hashtag_list_q.add(Q(hashtag=hashtag), Q.OR)
-        new_queryset = Subject.objects.filter(hashtag_list_q, no_data=False).order_by(*order_by)
-        if filter_hashtag:
-            register_popular_subjects.delay(filter_hashtag)
-        return new_queryset
+        queryset = super().get_queryset()
+        search = self.request.GET.get('search', None)
+        if search:
+            queryset = queryset.filter(hashtag=search)
+            register_popular_subject.delay(search)
+        return queryset

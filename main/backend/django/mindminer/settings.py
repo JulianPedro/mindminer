@@ -87,6 +87,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mindminer.wsgi.application'
 
+# Rest Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
 # Celery
 
 CELERY_BROKER_URL = f'redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}'
@@ -168,9 +175,14 @@ NEWS_API_KEY = os.getenv('NEWS_API_KEY')
 CELERY_BEAT_SCHEDULE = {
     'get_news': {
         'task': 'news.tasks.get_news',
+        'schedule': crontab(minute=0, hour=6)
+    },
+    'update_timeline': {
+        'task': 'subject.tasks.update_timeline',
         'schedule': crontab(minute=0, hour=0)
     },
 }
 
 # CORS
+
 CORS_ORIGIN_ALLOW_ALL = True

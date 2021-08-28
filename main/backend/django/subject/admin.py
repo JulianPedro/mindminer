@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from subject.models import Subject, History
+from subject.models import Subject, Timeline
 
 
 admin.site.register(Subject)
-admin.site.register(History)
+admin.site.register(Timeline)

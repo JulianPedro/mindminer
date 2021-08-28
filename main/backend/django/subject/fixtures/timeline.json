@@ -1,0 +1,35 @@
+[
+{
+  "model": "subject.timeline",
+  "pk": "3f47efbf-0962-4ac1-a4b7-078dca5028ac",
+  "fields": {
+    "subject": "a8e5d4ef-056d-4450-9b6f-534375bdf646",
+    "date": "2021-08-26T22:15:46.518Z",
+    "interaction": 22,
+    "approval_percentage": 70.0,
+    "disapproval_percentage": 30.0
+  }
+},
+{
+  "model": "subject.timeline",
+  "pk": "b4f0355e-45dd-44ad-91d0-831bbf78a53a",
+  "fields": {
+    "subject": "bf6a9ba8-3f3b-4314-9140-8bce31f1c682",
+    "date": "2021-08-26T22:15:33.575Z",
+    "interaction": 100,
+    "approval_percentage": 10.0,
+    "disapproval_percentage": 90.0
+  }
+},
+{
+  "model": "subject.timeline",
+  "pk": "f4fa5ed3-87d6-4953-a720-44e575b6c16a",
+  "fields": {
+    "subject": "58989dcd-c8d9-4fb9-9cbf-1c2bd43c69e4",
+    "date": "2021-08-26T22:15:03.145Z",
+    "interaction": 2,
+    "approval_percentage": 1.0,
+    "disapproval_percentage": 1.0
+  }
+}
+]
