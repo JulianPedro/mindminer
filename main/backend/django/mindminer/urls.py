@@ -18,11 +18,13 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 from subject.views import SubjectViewSet
+from subject.mongo_views import TweetViewSet
 from news.views import NewsViewSet
 
 ROUTER = DefaultRouter()
 ROUTER.register(r'api/subject', SubjectViewSet)
 ROUTER.register(r'api/news', NewsViewSet)
+ROUTER.register(r'api/tweets', TweetViewSet, basename='api-tweet')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

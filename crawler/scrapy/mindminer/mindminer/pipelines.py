@@ -44,6 +44,8 @@ class DataPipeline:
 
     def process_item(self, item, spider):
         item['discover_date'] = datetime.datetime.now()
+        if item.get('create_at', None):
+            item['create_at'] = datetime.datetime.strptime(item.get('create_at'), '%a %b %d %H:%M:%S %z %Y')
         if not item.get('tweet_url') and item.get('user_name') and item.get('tweet_id'):
             user_name = item.get('user_name')
             tweet_id = item.get('tweet_id')

@@ -21,6 +21,7 @@ class SubjectViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         search = self.request.GET.get('search', None)
         if search:
-            queryset = queryset.filter(hashtag=search)
-            register_popular_subject.delay(search)
+            queryset = queryset.filter(hashtag__icontains=search)
+            if len(search) >= 2:  # Skip possible wrong search
+                register_popular_subject.delay(search)
         return queryset

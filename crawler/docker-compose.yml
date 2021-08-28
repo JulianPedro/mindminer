@@ -7,9 +7,18 @@ services:
     working_dir: /code
     volumes:
       - ./scrapy/:/code
+    networks:
+      - mindminer
   mongo:
     container_name: mindminer_crawlers_mongodb
     image: mongo:4.2.2
     restart: always
     volumes:
       - ./mongo/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh
+    networks:
+      - mindminer
+
+networks:
+  mindminer:
+    external: true
+    name: mindminer
