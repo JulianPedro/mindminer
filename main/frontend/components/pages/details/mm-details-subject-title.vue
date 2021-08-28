@@ -1,10 +1,16 @@
 <template>
-  <div class="subject__title"># Este é um assunto de teste</div>
+  <div class="subject__title"># {{ title }}</div>
 </template>
 
 <script>
 export default {
   name: "DetailsSubjectTitle",
+  props: {
+    title: {
+      required: true,
+      type: String,
+    },
+  },
 };
 </script>
 

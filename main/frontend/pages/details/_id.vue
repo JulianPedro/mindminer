@@ -1,7 +1,9 @@
 <template>
-  <div class="subject">
-    <mm-details-subject-title />
-    <div class="subject__chart"></div>
+  <div v-if="subject" class="subject">
+    <mm-details-subject-title :title="subject.hashtag" />
+    <div class="subject__chart">
+      <v-chart :option="chart" />
+    </div>
     <div class="subject__text">
       <mm-subject-text />
     </div>
@@ -24,8 +26,16 @@ import MmSubjectText from "@/components/pages/details/mm-subject-text";
 export default {
   name: "Id",
   components: { MmSubjectText, MmDetailsTweetComment, MmDetailsSubjectTitle },
+  async asyncData({ $axios, params }) {
+    const { data: subject } = await $axios.get(`/subject/${params.id}`);
+
+    return {
+      subject,
+    };
+  },
   data() {
     return {
+      subject: null,
       comments: [
         {
           id: 0,
@@ -51,6 +61,49 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    chart() {
+      return {
+        title: {
+          text: "Aprovação/reprovação",
+          left: "center",
+        },
+        tooltip: {
+          trigger: "item",
+        },
+        legend: {
+          orient: "vertical",
+          left: "left",
+        },
+        series: [
+          {
+            name: "访问来源",
+            type: "pie",
+            radius: "50%",
+            data: [
+              {
+                value: 1048,
+                name: "Aprovação",
+                itemStyle: { color: "#4ADE80" },
+              },
+              {
+                value: 735,
+                name: "Reprovação",
+                itemStyle: { color: "#F87171" },
+              },
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+              },
+            },
+          },
+        ],
+      };
+    },
   },
 };
 </script>

@@ -16,7 +16,7 @@
         <tr
           v-for="subject in subjects"
           :key="`subject_${subject.id}`"
-          @click="openSubject"
+          @click="openSubject(subject)"
         >
           <td colspan="3">{{ subject.hashtag }}</td>
           <td colspan="1">{{ getTimelineSetInfo(subject, "interactions") }}</td>
