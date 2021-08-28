@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import mongoengine
 from celery.schedules import crontab
 from pathlib import Path
 
@@ -51,7 +52,8 @@ EXTERNAL_APPS = [
     'rest_framework',
     'django_celery_beat',
     'django_filters',
-    'corsheaders'
+    'corsheaders',
+    'rest_framework_mongoengine'
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS + EXTERNAL_APPS
@@ -186,3 +188,12 @@ CELERY_BEAT_SCHEDULE = {
 # CORS
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# MongoEngine Connect
+mongoengine.connect(
+    db=os.environ.get('MONGO_DATABASE'),
+    authentication_source='admin',
+    host=os.environ.get('MONGO_HOST'),
+    username=os.environ.get('MONGO_USER'),
+    password=os.environ.get('MONGO_PASSWORD')
+)

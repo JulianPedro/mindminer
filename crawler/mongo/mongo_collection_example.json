@@ -9,6 +9,7 @@
   "user_photo": null,
   "hashtag": null,
   "discover_date": null,
+  "captured_by": null,
   "analysis_date": null,
   "analysis_result": null,
   "score_result": null

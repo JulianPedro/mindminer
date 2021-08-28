@@ -17,6 +17,8 @@ services:
       - ./backend/env/api_keys.env
     depends_on:
       - postgres
+    networks:
+      - mindminer
 
   postgres:
     container_name: mindminer_postgres
@@ -26,11 +28,15 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - ./backend/env/main.env
+    networks:
+      - mindminer
 
   redis:
     container_name: mindminer_redis
     restart: always
     image: redis:alpine3.12
+    networks:
+      - mindminer
 
   frontend:
     container_name: frontend
@@ -40,8 +46,15 @@ services:
     volumes:
       - ./frontend:/usr/src/mindminer
       - /usr/src/app/node_modules
+    networks:
+      - mindminer
 
 volumes:
   postgres_data:
   staticfiles:
   mediafiles:
+
+networks:
+  mindminer:
+    external: false
+    name: mindminer
