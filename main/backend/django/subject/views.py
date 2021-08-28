@@ -21,6 +21,6 @@ class SubjectViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         search = self.request.GET.get('search', None)
         if search:
-            queryset = queryset.filter(hashtag=search)
+            queryset = queryset.filter(hashtag__icontains=search)
             register_popular_subject.delay(search)
         return queryset

@@ -13,8 +13,8 @@ export default {
   components: { MmHomeSidebar, MmHomeMain },
   async asyncData({ $axios }) {
     const { data } = await $axios.get("/news");
-    const top3 = data.slice(0, 3);
-    const others = data.slice(3);
+    const top3 = data.results.slice(0, 3);
+    const others = data.results.slice(3);
 
     return {
       top3,
