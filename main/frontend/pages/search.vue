@@ -1,9 +1,9 @@
 <template>
   <div class="search">
-    <h1 v-if="search">
+    <h1 v-if="search" class="font-medium">
       Sua busca resultou por {{ search }} restornou {{ count }} resultados
     </h1>
-    <table class="w-full">
+    <table class="w-full mt-4">
       <thead>
         <tr class="table__header">
           <th colspan="3">Nome</th>
@@ -22,6 +22,9 @@
           <td class="text-red-500" colspan="1">
             {{ getTimelineSetInfo(subject, "disapproval_percentage") }}
           </td>
+        </tr>
+        <tr v-if="!subjects.length">
+          <td class="text-center" colspan="6">Sem resultados</td>
         </tr>
       </tbody>
     </table>
