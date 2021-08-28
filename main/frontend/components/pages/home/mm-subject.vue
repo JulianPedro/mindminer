@@ -1,5 +1,5 @@
 <template>
-  <div class="subject" @click="openSubject">
+  <div class="subject" v-on="$listeners" @click="openSubject">
     <div class="subject__image">
       <img alt="capa" :src="subject.image_url" />
       <span class="subject__title">{{ subject.title }}</span>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     openSubject() {
-      this.$router.push(`/details/${this.subject.id}`);
+      window.open(this.subject.source_url, "_blank");
     },
   },
 };
