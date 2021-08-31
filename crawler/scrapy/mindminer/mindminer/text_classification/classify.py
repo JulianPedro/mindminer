@@ -54,4 +54,4 @@ class Classify:
         texts = pad_sequences(texts, maxlen=200)
         score = self.model.predict(texts)
         prediction = int(score.round().item())
-        return self.sentiments[1][prediction], score
+        return self.sentiments[1][prediction], score.item()

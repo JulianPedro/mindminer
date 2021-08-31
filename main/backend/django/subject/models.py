@@ -29,8 +29,8 @@ class Timeline(models.Model):
     subject = models.ForeignKey('subject.Subject', verbose_name='Subject', on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name='Date', auto_now_add=True)
     interaction = models.IntegerField(verbose_name='Interaction', default=0)
-    approval_percentage = models.FloatField(verbose_name='Approval Percentage')
-    disapproval_percentage = models.FloatField(verbose_name='Disapproval Percentage')
+    approval_percentage = models.FloatField(verbose_name='Approval Percentage', default=0)
+    disapproval_percentage = models.FloatField(verbose_name='Disapproval Percentage', default=0)
 
     class Meta:
         """ Meta Model Timeline. """
