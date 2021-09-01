@@ -6,7 +6,7 @@ services:
     build: ./scrapy
     working_dir: /code
     volumes:
-      - ./scrapy/:/code
+      - ./scrapy/mindminer/:/code
     networks:
       - mindminer
   mongo:
