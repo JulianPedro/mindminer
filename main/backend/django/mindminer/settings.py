@@ -177,12 +177,16 @@ NEWS_API_KEY = os.getenv('NEWS_API_KEY')
 CELERY_BEAT_SCHEDULE = {
     'get_news': {
         'task': 'news.tasks.get_news',
-        'schedule': crontab(minute=0, hour=6)
+        'schedule': crontab(minute=0, hour='*/6')
     },
     'update_timeline': {
         'task': 'subject.tasks.update_timeline',
         'schedule': crontab(minute=0, hour=0)
     },
+    'crawling': {
+        'task': 'subject.tasks.crawling',
+        'schedule': crontab(minute=0, hour='*/1')
+    }
 }
 
 # CORS
@@ -197,3 +201,6 @@ mongoengine.connect(
     username=os.environ.get('MONGO_USER'),
     password=os.environ.get('MONGO_PASSWORD')
 )
+
+SCRAPYD_HOST = os.environ.get('SCRAPYD_HOST')
+SCRAPYD_PORT = os.environ.get('SCRAPYD_PORT')
