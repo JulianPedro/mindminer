@@ -58,7 +58,7 @@ export default {
           {
             name: "Total",
             type: "pie",
-            radius: "50%",
+            radius: "70%",
             label: {
               position: "inner",
               fontSize: 14,
@@ -92,6 +92,30 @@ export default {
     },
     disapprovalPercentage() {
       return this.subject.timeline_set?.disapproval_percentage || 0;
+    },
+  },
+  mounted() {
+    this.getTweets();
+  },
+  methods: {
+    async getTweets() {
+      const { data } = await this.$axios.get("/tweets", {
+        params: {
+          search: this.subject.hashtag,
+        },
+      });
+
+      this.comments = data.results.map((tweet) => ({
+        id: tweet.id,
+        data: tweet.tweet_date,
+        content: tweet.tweet_text,
+        analysis_result: tweet.analysis_result,
+        url: tweet.tweet_url,
+        author: {
+          name: tweet.user_name,
+          image: tweet.user_photo,
+        },
+      }));
     },
   },
 };

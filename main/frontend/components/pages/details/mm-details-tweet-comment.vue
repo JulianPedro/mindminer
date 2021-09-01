@@ -2,10 +2,17 @@
   <div class="tweet">
     <div class="tweet__header header">
       <div class="header__avatar">
-        <user-icon size="18" />
+        <div v-if="!tweet.author.image">
+          <user-icon size="18" />
+        </div>
+        <img v-else class="rounded-full w-8 h-8" :src="tweet.author.image" />
       </div>
       <div class="header__name">
-        {{ tweet.author.name }}
+        <span>
+          <a :href="tweet.url" target="_blank">{{ tweet.author.name }}</a>
+        </span>
+        <span v-if="tweet.analysis_result === 'Negativo'">(👎)</span>
+        <span v-if="tweet.analysis_result === 'Positivo'">(👍)</span>
       </div>
       <div class="header__details details">
         <div></div>
