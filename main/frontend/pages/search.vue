@@ -9,25 +9,41 @@
           <th colspan="3">
             <div>
               Nome
-              <mm-sort class="ml-1" />
+              <mm-sort
+                class="ml-1"
+                @up="goToPage(`/subject`, 'hashtag')"
+                @down="goToPage(`/subject`, '-hashtag')"
+              />
             </div>
           </th>
           <th colspan="1">
             <div>
               Interações
-              <mm-sort class="ml-1" />
+              <mm-sort
+                class="ml-1"
+                @up="goToPage(`/subject`, 'popularity')"
+                @down="goToPage(`/subject`, '-popularity')"
+              />
             </div>
           </th>
           <th colspan="1">
             <div>
               Aprovações
-              <mm-sort class="ml-1" />
+              <mm-sort
+                class="ml-1"
+                @up="goToPage(`/subject`, 'approval_percentage')"
+                @down="goToPage(`/subject`, '-approval_percentage')"
+              />
             </div>
           </th>
           <th colspan="1">
             <div>
               Rejeições
-              <mm-sort class="ml-1" />
+              <mm-sort
+                class="ml-1"
+                @up="goToPage(`/subject`, 'disapproval_percentage')"
+                @down="goToPage(`/subject`, '-disapproval_percentage')"
+              />
             </div>
           </th>
         </tr>
@@ -109,12 +125,13 @@ export default {
 
       return " ";
     },
-    async goToPage(url) {
+    async goToPage(url, ordering = undefined) {
       const {
         data: { results: subjects, count, previous, next },
       } = await this.$axios.get(url, {
         params: {
           search: this.$route.query.search,
+          ordering,
         },
       });
 
