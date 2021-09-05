@@ -18,7 +18,7 @@ class SubjectViewSet(viewsets.ModelViewSet):
     serializer_class = SubjectSerializer
     http_method_names = ['get']
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['popularity', 'approval_percentage', 'disapproval_percentage']
+    ordering_fields = ['hashtag', 'popularity', 'approval_percentage', 'disapproval_percentage']
     ordering = ['-popularity']
     paginate_by = 10
 
