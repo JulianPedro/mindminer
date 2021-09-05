@@ -1,15 +1,35 @@
 <template>
   <div class="search">
     <h1 v-if="search" class="font-medium">
-      Sua busca resultou por {{ search }} restornou {{ count }} resultados
+      Sua busca resultou por "{{ search }}" restornou {{ count }} resultados
     </h1>
     <table class="w-full mt-4">
       <thead>
         <tr class="table__header">
-          <th colspan="3">Nome</th>
-          <th colspan="1">Interações</th>
-          <th colspan="1">Aprovações</th>
-          <th colspan="1">Rejeições</th>
+          <th colspan="3">
+            <div>
+              Nome
+              <mm-sort class="ml-1" />
+            </div>
+          </th>
+          <th colspan="1">
+            <div>
+              Interações
+              <mm-sort class="ml-1" />
+            </div>
+          </th>
+          <th colspan="1">
+            <div>
+              Aprovações
+              <mm-sort class="ml-1" />
+            </div>
+          </th>
+          <th colspan="1">
+            <div>
+              Rejeições
+              <mm-sort class="ml-1" />
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody class="table__body">
@@ -33,31 +53,24 @@
       </tbody>
     </table>
 
-    <div class="paginate__buttons">
-      <button
-        :disabled="isPrevBtnDisabled"
-        class="paginate__button mr-2"
-        @click="goToPage(previous)"
-      >
-        <span>Voltar</span>
-      </button>
-      <button
-        :disabled="isNextBtnDisabled"
-        class="paginate__button"
-        @click="goToPage(next)"
-      >
-        <span>Avançar</span>
-      </button>
-    </div>
+    <mm-paginate
+      :prev-page="previous"
+      :next-page="next"
+      @next="() => goToPage(next)"
+      @previous="() => goToPage(next)"
+    />
   </div>
 </template>
 
 <script>
+import MmSort from "@/components/global/mm-sort";
+import MmPaginate from "@/components/global/mm-paginate";
 export default {
   name: "Search",
   key(route) {
     return route.fullPath;
   },
+  components: { MmPaginate, MmSort },
   async asyncData({ query, $axios }) {
     const {
       data: { results: subjects, count, previous, next },
@@ -85,12 +98,6 @@ export default {
   computed: {
     search() {
       return this.$route.query.search;
-    },
-    isPrevBtnDisabled() {
-      return !this.previous;
-    },
-    isNextBtnDisabled() {
-      return !this.next;
     },
   },
   watchQuery: ["search"],
@@ -136,6 +143,10 @@ export default {
   @apply text-left py-2;
 }
 
+.table__header > th > div {
+  @apply flex items-center;
+}
+
 .table__body > tr {
   @apply cursor-pointer;
 }
@@ -146,21 +157,5 @@ export default {
 
 .table__body tr:hover {
   @apply bg-tertiary;
-}
-
-.paginate__buttons {
-  @apply mt-6 flex justify-end;
-}
-
-.paginate__button {
-  @apply flex items-center justify-center p-2 bg-tertiary font-medium rounded-sm;
-}
-
-.paginate__button:disabled {
-  @apply cursor-not-allowed;
-}
-
-.paginate__button:not(:disabled):hover {
-  @apply bg-primary text-white;
 }
 </style>

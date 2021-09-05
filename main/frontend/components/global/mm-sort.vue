@@ -21,7 +21,8 @@ export default {
   props: {
     size: {
       required: false,
-      default: "14",
+      type: String,
+      default: "12",
     },
   },
 };

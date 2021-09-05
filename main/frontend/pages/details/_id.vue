@@ -15,6 +15,12 @@
         :tweet="tweet"
         class="mt-2"
       />
+      <mm-paginate
+        :prev-page="prev"
+        :next-page="next"
+        @next="() => getTweets(next)"
+        @previous="() => getTweets(prev)"
+      />
     </div>
   </div>
 </template>
@@ -23,9 +29,15 @@
 import MmDetailsSubjectTitle from "@/components/pages/details/mm-details-subject-title";
 import MmDetailsTweetComment from "@/components/pages/details/mm-details-tweet-comment";
 import MmSubjectText from "@/components/pages/details/mm-subject-text";
+import MmPaginate from "@/components/global/mm-paginate";
 export default {
   name: "Id",
-  components: { MmSubjectText, MmDetailsTweetComment, MmDetailsSubjectTitle },
+  components: {
+    MmPaginate,
+    MmSubjectText,
+    MmDetailsTweetComment,
+    MmDetailsSubjectTitle,
+  },
   async asyncData({ $axios, params }) {
     const { data: subject } = await $axios.get(`/subject/${params.id}`);
 
@@ -37,6 +49,8 @@ export default {
     return {
       subject: null,
       comments: [],
+      prev: null,
+      next: null,
     };
   },
   computed: {
@@ -87,25 +101,23 @@ export default {
         ],
       };
     },
-    approvalPercentage() {
-      return this.subject.timeline_set?.approval_percentage || 0;
-    },
-    disapprovalPercentage() {
-      return this.subject.timeline_set?.disapproval_percentage || 0;
-    },
   },
   mounted() {
     this.getTweets();
   },
   methods: {
-    async getTweets() {
-      const { data } = await this.$axios.get("/tweets", {
+    async getTweets(url = "/tweets") {
+      const {
+        data: { results: tweets, previous, next },
+      } = await this.$axios.get(url, {
         params: {
           search: this.subject.hashtag,
         },
       });
 
-      this.comments = data.results.map((tweet) => ({
+      this.prev = previous;
+      this.next = next;
+      this.comments = tweets.map((tweet) => ({
         id: tweet.id,
         data: tweet.tweet_date,
         content: tweet.tweet_text,
