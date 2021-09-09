@@ -1,6 +1,8 @@
 <template>
   <aside class="home_sidebar sidebar">
-    <div class="sidebar__title">Mais populares <mm-sort /></div>
+    <div class="sidebar__title">
+      Mais populares <mm-sort @up="$emit('up')" @down="$emit('down')" />
+    </div>
     <div class="sidebar__subjects">
       <mm-subject
         v-for="subject in subjects"

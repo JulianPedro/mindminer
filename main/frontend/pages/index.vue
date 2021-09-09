@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <mm-home-main :subjects="top3" />
-    <mm-home-sidebar :subjects="others" />
+    <mm-home-sidebar
+      :subjects="others"
+      @up="query('published_at')"
+      @down="query('-published_at')"
+    />
   </div>
 </template>
 
@@ -26,6 +30,17 @@ export default {
       top3: [],
       others: [],
     };
+  },
+  methods: {
+    async query(ordering = undefined) {
+      const { data } = await this.$axios.get("/news", {
+        params: {
+          ordering,
+        },
+      });
+
+      this.others = data.results;
+    },
   },
 };
 </script>
