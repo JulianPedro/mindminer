@@ -11,13 +11,22 @@
         <span>
           <a :href="tweet.url" target="_blank">{{ tweet.author.name }}</a>
         </span>
-        <span v-if="tweet.analysis_result === 'Negativo'">(👎)</span>
-        <span v-if="tweet.analysis_result === 'Positivo'">(👍)</span>
-      </div>
-      <div class="header__details details">
-        <div></div>
-        <div class="details__date">
-          {{ tweet.date | ptDate }}
+        <div class="flex flex-1 justify-end items-center">
+          <div
+            v-if="tweet.analysis_result === 'Positivo'"
+            class="rate-flag bg-green-400"
+          >
+            <check-icon size="16" />
+          </div>
+          <div
+            v-if="tweet.analysis_result === 'Negativo'"
+            class="rate-flag bg-red-400"
+          >
+            <x-icon size="16" />
+          </div>
+          <div class="details__date">
+            {{ tweet.date | ptDate }}
+          </div>
         </div>
       </div>
     </div>
@@ -28,11 +37,13 @@
 </template>
 
 <script>
-import { UserIcon } from "vue-feather-icons";
+import { UserIcon, CheckIcon, XIcon } from "vue-feather-icons";
 export default {
   name: "MmDetailsTweetComment",
   components: {
     UserIcon,
+    CheckIcon,
+    XIcon,
   },
   props: {
     tweet: {
@@ -49,7 +60,7 @@ export default {
 }
 
 .header__name {
-  @apply flex-1 ml-4 items-center font-medium;
+  @apply flex flex-1 ml-4 items-center font-medium;
 }
 
 .header__avatar {
@@ -60,5 +71,13 @@ export default {
 
 .tweet__body {
   @apply ml-12 text-secondary text-sm;
+}
+
+.rate-flag {
+  @apply mr-2 w-8 h-8 rounded-full flex items-center justify-center text-white;
+}
+
+.details__date {
+  @apply text-secondary text-sm;
 }
 </style>

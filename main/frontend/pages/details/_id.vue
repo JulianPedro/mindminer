@@ -119,7 +119,7 @@ export default {
       this.next = next;
       this.comments = tweets.map((tweet) => ({
         id: tweet.id,
-        data: tweet.tweet_date,
+        date: tweet.tweet_date,
         content: tweet.tweet_text,
         analysis_result: tweet.analysis_result,
         url: tweet.tweet_url,
