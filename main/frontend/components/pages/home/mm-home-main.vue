@@ -1,11 +1,19 @@
 <template>
   <div class="home__main main">
     <div class="main__subject">
-      <mm-carousel
-        indicator-type="disc"
-        style="height: 100%"
-        :data="subjectsImages"
-      />
+      <carousel :per-page="1">
+        <slide v-for="subject in subjects" :key="`${subject.id}`">
+          <div class="cursor-pointer relative">
+            <div
+              class="font-medium text-white p-2 absolute text-xl bottom-0 mb-8"
+              @click="openSubject(subject)"
+            >
+              {{ subject.title }}
+            </div>
+            <img alt="capa" class="w-full h-96" :src="subject.image_url" />
+          </div>
+        </slide>
+      </carousel>
     </div>
     <div class="main__help help">
       <span class="help__name"> <strong> # Como utilizar </strong> </span><br />
@@ -15,29 +23,22 @@
 </template>
 
 <script>
+import { Carousel, Slide } from "vue-carousel";
 export default {
   name: "MmHomeMain",
+  components: {
+    Carousel,
+    Slide,
+  },
   props: {
     subjects: {
       type: Array,
       required: true,
     },
   },
-  computed: {
-    subjectsImages() {
-      return this.subjects.map((subject) => this.makeSubject(subject));
-    },
-  },
   methods: {
-    makeSubject(subject) {
-      return `
-        <div class="relative">
-            <div class="font-medium text-white p-2 absolute text-xl bottom-0 mb-8">
-                ${subject.title}
-            </div>
-            <img alt="capa" class="w-full h-96" src="${subject.image_url}" />
-        </div>
-      `;
+    openSubject(subject) {
+      window.open(subject.source_url, "_blank");
     },
   },
 };

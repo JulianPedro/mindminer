@@ -23,7 +23,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@plugins/vueCarousel.js", "@plugins/moment", "@plugins/eChart"],
+  plugins: ["@plugins/moment", "@plugins/eChart"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
