@@ -3,6 +3,11 @@
     <mm-details-subject-title :title="subject.hashtag" />
     <div class="subject__chart">
       <v-chart :option="chart" />
+      Números de twitters:
+      {{ totalInteraction }}
+      <br />
+      Números de twitters positivos: {{ totalApproval }} <br />
+      Números de twitters negativos: {{ totalDisapproval }}
     </div>
     <div class="subject__text">
       <mm-subject-text />
@@ -54,6 +59,26 @@ export default {
     };
   },
   computed: {
+    approvalPercentage() {
+      return this.subject.timeline_set?.approval_percentage || 0;
+    },
+    disapprovalPercentage() {
+      return this.subject.timeline_set?.disapproval_percentage || 0;
+    },
+    totalInteraction() {
+      return this.subject.timeline_set?.interaction || 0;
+    },
+    totalApproval() {
+      return ((this.approvalPercentage * this.totalInteraction) / 100).toFixed(
+        2
+      );
+    },
+    totalDisapproval() {
+      return (
+        (this.disapprovalPercentage * this.totalInteraction) /
+        100
+      ).toFixed(2);
+    },
     chart() {
       return {
         title: {
@@ -139,7 +164,7 @@ export default {
 }
 
 .subject__chart {
-  @apply w-full flex justify-center items-center h-64 bg-tertiary mt-2 p-4;
+  @apply w-full flex flex-col justify-center items-center h-64 bg-tertiary mt-2 p-4 text-secondary text-sm;
 }
 
 @screen md {
