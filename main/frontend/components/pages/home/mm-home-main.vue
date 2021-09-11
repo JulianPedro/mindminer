@@ -17,7 +17,13 @@
     </div>
     <div class="main__help help">
       <span class="help__name"> <strong> # Como utilizar </strong> </span><br />
-      <div class="help__text">Bolsolula 2022</div>
+      <div class="help__text">
+        Mindminer é uma plataforma de visualização de dados com viés político
+        classificado por uma inteligência artificial. Para utilizar basta
+        procurar por um determinado assunto na barra de pesquisa, caso o assunto
+        não exista em nossa base de dados, não se preocupe, nosso robô 🤖 irá
+        agendar novas buscas pelo mesmo de forma automática.
+      </div>
     </div>
   </div>
 </template>
