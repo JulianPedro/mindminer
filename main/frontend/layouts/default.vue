@@ -1,13 +1,25 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="layout">
+    <mm-header />
+    <div class="layout__page page">
+      <div class="page__content">
+        <Nuxt />
+      </div>
+    </div>
   </div>
 </template>
 
+<script>
+import MmHeader from "@/components/layout/header/mm-header";
+export default {
+  components: { MmHeader },
+};
+</script>
+
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -17,39 +29,45 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 5px;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary;
+}
+</style>
+<style scoped>
+.layout {
+  @apply flex flex-col bg-tertiary h-screen;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.layout__page {
+  @apply flex flex-col min-h-0 flex-1 p-2;
+}
+
+@screen md {
+  .layout__page {
+    @apply px-6 py-4;
+  }
+}
+
+.page__content {
+  @apply flex flex-col h-full w-full overflow-auto bg-white rounded-sm shadow;
 }
 </style>

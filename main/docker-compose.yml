@@ -43,9 +43,8 @@ services:
     restart: always
     build:
       context: ./frontend
-    volumes:
-      - ./frontend:/usr/src/mindminer
-      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
     networks:
       - mindminer
 
