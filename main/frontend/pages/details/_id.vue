@@ -3,11 +3,11 @@
     <mm-details-subject-title :title="subject.hashtag" />
     <div class="subject__chart">
       <v-chart :option="chart" />
-      Números de twitters:
+      Números de tweets:
       {{ totalInteraction }}
       <br />
-      Números de twitters positivos: {{ totalApproval }} <br />
-      Números de twitters negativos: {{ totalDisapproval }}
+      Números de tweets positivos: {{ totalApproval }} <br />
+      Números de tweets negativos: {{ totalDisapproval }}
     </div>
     <div class="subject__text">
       <mm-subject-text :subject="subject" />
