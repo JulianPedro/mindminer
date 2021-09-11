@@ -1,17 +1,21 @@
 <template>
   <div class="subject__content">
-    {{ text }}
+    Todos os dados sobre <b>{{ subject.hashtag }}</b> foram obtidos através do
+    Twitter e analisados por uma IA que classificou os tweets subjacentes com
+    base na versão de treinamento 0.01. É importante levar os dados aqui
+    contidos como base de referência e não verdade absoluta, a IA está em fase
+    de aprendizagem e pode errar em alguns momentos.
   </div>
 </template>
 
 <script>
 export default {
   name: "MmSubjectText",
-  data() {
-    return {
-      text: `Lorem ipsum facilisis sociosqu vestibulum posuere sed metus mi inceptos mauris, aptent lorem rutrum ante volutpat fusce condimentum porttitor tellus, integer vitae consequat primis suspendisse tellus sagittis curabitur vel. curabitur morbi lacinia augue dui dolor, fusce pharetra hac. vitae adipiscing quis egestas blandit class nostra sociosqu inceptos, venenatis habitasse consequat laoreet lorem viverra nec cursus scelerisque, turpis sollicitudin aenean cursus dapibus aenean erat. sit urna ultricies ut leo nibh sem justo hendrerit mi libero interdum convallis, luctus erat nisl cras eu augue quisque pretium donec tellus. lacus integer ipsum torquent metus vulputate orci curae ut, hendrerit nostra auctor aliquam scelerisque volutpat vestibulum eleifend odio, quisque molestie donec turpis vulputate proin morbi.
-`,
-    };
+  props: {
+    subject: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>

@@ -10,7 +10,7 @@
       Números de twitters negativos: {{ totalDisapproval }}
     </div>
     <div class="subject__text">
-      <mm-subject-text />
+      <mm-subject-text :subject="subject" />
     </div>
     <div class="mt-4">
       <div class="font-medium text-lg mb-4"># Tweets</div>
@@ -171,5 +171,9 @@ export default {
   .subject {
     @apply px-16 py-8;
   }
+}
+
+.subject__text {
+  @apply mt-4;
 }
 </style>
