@@ -5,7 +5,15 @@
         MindMiner
       </span>
     </nuxt-link>
-    <mm-hearder-search-bar />
+    <div class="flex items-center justify-center">
+      <div
+        class="text-white mr-4 font-medium cursor-pointer"
+        @click="goToSubjectsPage"
+      >
+        Explorar
+      </div>
+      <mm-hearder-search-bar />
+    </div>
   </header>
 </template>
 
@@ -14,6 +22,11 @@ import MmHearderSearchBar from "@/components/layout/header/mm-hearder-search-bar
 export default {
   name: "MmHeader",
   components: { MmHearderSearchBar },
+  methods: {
+    goToSubjectsPage() {
+      this.$router.push({ path: "/search" });
+    },
+  },
 };
 </script>
 

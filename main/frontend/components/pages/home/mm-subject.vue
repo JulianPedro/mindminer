@@ -2,10 +2,9 @@
   <div class="subject" v-on="$listeners" @click="openSubject">
     <div class="subject__image">
       <img alt="capa" :src="subject.image_url" />
-      <span class="subject__title">{{ subject.title }}</span>
     </div>
-    <div class="subject__description">
-      {{ subject.description }}
+    <div class="subject__title">
+      {{ subject.title }}
     </div>
   </div>
 </template>
@@ -40,11 +39,7 @@ export default {
   @apply rounded-tl rounded-tr shadow w-full h-24 object-cover;
 }
 
-.subject__description {
-  @apply text-secondary font-light text-base max-h-16 truncate;
-}
-
 .subject__title {
-  @apply absolute truncate bottom-0 left-0 text-white text-base font-light ml-2 truncate w-full;
+  @apply text-secondary text-base font-light ml-2 w-full;
 }
 </style>

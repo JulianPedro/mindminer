@@ -55,7 +55,7 @@
           @click="openSubject(subject)"
         >
           <td colspan="3">{{ subject.hashtag }}</td>
-          <td colspan="1">{{ getTimelineSetInfo(subject, "interactions") }}</td>
+          <td colspan="1">{{ getTimelineSetInfo(subject, "interaction") }}</td>
           <td class="text-green-500" colspan="1">
             {{ getTimelineSetInfo(subject, "approval_percentage") }}
           </td>
@@ -73,7 +73,7 @@
       :prev-page="previous"
       :next-page="next"
       @next="() => goToPage(next)"
-      @previous="() => goToPage(next)"
+      @previous="() => goToPage(previous)"
     />
   </div>
 </template>
