@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <h1 v-if="search" class="font-medium">
-      Sua busca resultou por "{{ search }}" restornou {{ count }} resultados
+      Sua busca por "{{ search }}" retornou {{ count }} resultados
     </h1>
     <table class="w-full mt-4">
       <thead>

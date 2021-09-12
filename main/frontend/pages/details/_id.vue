@@ -13,7 +13,23 @@
       <mm-subject-text :subject="subject" />
     </div>
     <div class="mt-4">
-      <div class="font-medium text-lg mb-4"># Tweets</div>
+      <div class="flex justify-between font-medium text-lg mb-4">
+        <span># Tweets</span>
+        <div class="cursor-pointer">
+          <span @click="showDateFilter = !showDateFilter">
+            <filter-icon v-if="!showDateFilter" class="text-secondary" />
+          </span>
+          <vue-date-picker
+            v-if="showDateFilter"
+            v-model="dateFilter"
+            placeholder="Escolha um range de data"
+            range
+            format="DD/MM/YYYY"
+            @change="queryTweets"
+            @clear="showDateFilter = false"
+          ></vue-date-picker>
+        </div>
+      </div>
       <mm-details-tweet-comment
         v-for="tweet in comments"
         :key="`tweet_${tweet.id}`"
@@ -35,6 +51,7 @@ import MmDetailsSubjectTitle from "@/components/pages/details/mm-details-subject
 import MmDetailsTweetComment from "@/components/pages/details/mm-details-tweet-comment";
 import MmSubjectText from "@/components/pages/details/mm-subject-text";
 import MmPaginate from "@/components/global/mm-paginate";
+import { FilterIcon } from "vue-feather-icons";
 export default {
   name: "Id",
   components: {
@@ -42,6 +59,7 @@ export default {
     MmSubjectText,
     MmDetailsTweetComment,
     MmDetailsSubjectTitle,
+    FilterIcon,
   },
   async asyncData({ $axios, params }) {
     const { data: subject } = await $axios.get(`/subject/${params.id}`);
@@ -56,6 +74,8 @@ export default {
       comments: [],
       prev: null,
       next: null,
+      showDateFilter: false,
+      dateFilter: null,
     };
   },
   computed: {
@@ -69,15 +89,14 @@ export default {
       return this.subject.timeline_set?.interaction || 0;
     },
     totalApproval() {
-      return ((this.approvalPercentage * this.totalInteraction) / 100).toFixed(
-        2
+      return Math.floor(
+        (this.approvalPercentage * this.totalInteraction) / 100
       );
     },
     totalDisapproval() {
-      return (
-        (this.disapprovalPercentage * this.totalInteraction) /
-        100
-      ).toFixed(2);
+      return Math.floor(
+        (this.disapprovalPercentage * this.totalInteraction) / 100
+      );
     },
     chart() {
       return {
@@ -131,12 +150,26 @@ export default {
     this.getTweets();
   },
   methods: {
-    async getTweets(url = "/tweets") {
+    queryTweets(dates) {
+      if (!dates[0] && !dates[1]) {
+        this.getTweets("/tweets", null, null);
+        return;
+      }
+      const from = this.formatDateToQuery(dates[0]);
+      const to = this.formatDateToQuery(dates[1]);
+      this.getTweets("/tweets", from, to);
+    },
+    formatDateToQuery(date) {
+      return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    },
+    async getTweets(url = "/tweets", from = undefined, to = undefined) {
       const {
         data: { results: tweets, previous, next },
       } = await this.$axios.get(url, {
         params: {
           search: this.subject.hashtag,
+          from,
+          to,
         },
       });
 
