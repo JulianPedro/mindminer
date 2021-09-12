@@ -20,11 +20,13 @@ from rest_framework.routers import DefaultRouter
 from subject.views import SubjectViewSet
 from subject.mongo_views import TweetViewSet
 from news.views import NewsViewSet
+from about.views import TrainingViewSet
 
 ROUTER = DefaultRouter()
 ROUTER.register(r'api/subject', SubjectViewSet)
 ROUTER.register(r'api/news', NewsViewSet)
 ROUTER.register(r'api/tweets', TweetViewSet, basename='api-tweet')
+ROUTER.register(r'api/about/training', TrainingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

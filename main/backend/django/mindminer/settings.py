@@ -45,7 +45,8 @@ DEFAULT_APPS = [
 
 LOCAL_APPS = [
     'subject',
-    'news'
+    'news',
+    'about'
 ]
 
 EXTERNAL_APPS = [
