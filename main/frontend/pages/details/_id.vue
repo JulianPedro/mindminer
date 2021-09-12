@@ -2,7 +2,7 @@
   <div v-if="subject" class="subject">
     <mm-details-subject-title :title="subject.hashtag" />
     <div class="subject__chart">
-      <v-chart :option="chart" />
+      <v-chart :autoresize="true" :option="chart" />
       Números de tweets:
       {{ totalInteraction }}
       <br />
@@ -164,7 +164,7 @@ export default {
 }
 
 .subject__chart {
-  @apply w-full flex flex-col justify-center items-center h-64 bg-tertiary mt-2 p-4 text-secondary text-sm;
+  @apply w-full flex flex-col justify-center items-center h-96 bg-tertiary mt-2 p-4 text-secondary text-sm;
 }
 
 @screen md {
