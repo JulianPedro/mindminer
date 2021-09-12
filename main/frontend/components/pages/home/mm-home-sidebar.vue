@@ -50,4 +50,10 @@ export default {
     @apply w-80 flex border-l py-8 px-10;
   }
 }
+
+@screen xl {
+  .home_sidebar {
+    @apply w-96;
+  }
+}
 </style>
