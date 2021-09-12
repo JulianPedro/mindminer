@@ -22,6 +22,7 @@
           <vue-date-picker
             v-if="showDateFilter"
             v-model="dateFilter"
+            placeholder="Escolha um range de data"
             range
             format="DD/MM/YYYY"
             @change="queryTweets"
@@ -88,15 +89,14 @@ export default {
       return this.subject.timeline_set?.interaction || 0;
     },
     totalApproval() {
-      return ((this.approvalPercentage * this.totalInteraction) / 100).toFixed(
-        2
+      return Math.floor(
+        (this.approvalPercentage * this.totalInteraction) / 100
       );
     },
     totalDisapproval() {
-      return (
-        (this.disapprovalPercentage * this.totalInteraction) /
-        100
-      ).toFixed(2);
+      return Math.floor(
+        (this.disapprovalPercentage * this.totalInteraction) / 100
+      );
     },
     chart() {
       return {

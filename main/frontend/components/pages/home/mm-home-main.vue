@@ -66,7 +66,7 @@ export default {
 }
 
 .main__subject {
-  @apply w-full h-96 bg-tertiary;
+  @apply w-full;
 }
 
 .main__help {
