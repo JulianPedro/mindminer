@@ -39,6 +39,8 @@ crawler/scrapy/mindminer/mindminer/text_classification/labels/label.pkl
 crawler/scrapy/mindminer/mindminer/text_classification/model/model.h5
 crawler/scrapy/mindminer/mindminer/text_classification/model/model.json
 crawler/scrapy/mindminer/mindminer/text_classification/tokenizer/tokenizer.json
+crawler/scrapy/mindminer/mindminer/text_classification/test/test_data.csv
+crawler/scrapy/mindminer/mindminer/text_classification/test/result.txt
 archive
 
 main/backend/env/api_keys.env

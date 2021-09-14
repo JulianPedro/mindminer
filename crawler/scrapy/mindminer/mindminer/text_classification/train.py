@@ -3,20 +3,33 @@ import io
 import sys
 import logging
 import pickle
+import argparse
 import pandas as pd
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import Sequential, load_model, model_from_json
 from tensorflow.keras.layers import LSTM, Dense, Dropout, SpatialDropout1D, Embedding
 
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s | %(name)s | %(levelname)s | %(message)s')
 logger = logging.getLogger(__name__)
 
-text_row_name = sys.argv[1]
-sentiment_row_name = sys.argv[2]
-dataset_path = sys.argv[3]
-epochs_amount = sys.argv[4]
+parser = argparse.ArgumentParser(description='MindMiner Training Model')
+parser.add_argument('--text-row', dest='text_row_name', required=True, help='Text row name')
+parser.add_argument('--sentiment-row', dest='sentiment_row_name', required=True, help='Sentiment row name')
+parser.add_argument('--dataset', dest='dataset_path', required=True, help='Dataset path')
+parser.add_argument('--epochs', dest='epochs_amount', required=True, help='Epochs')
+parser.add_argument('--model-hdf5', dest='model_hdf5', required=False, help='Continue training with model')
+parser.add_argument('--model-json', dest='model_json', required=False, help='Continue training with model')
+
+args = parser.parse_args()
+
+text_row_name = args.text_row_name
+sentiment_row_name = args.sentiment_row_name
+dataset_path = args.dataset_path
+epochs_amount = args.epochs_amount
+model_hdf5 = args.model_hdf5
+model_json = args.model_json
 
 dataset = pd.read_csv(dataset_path, sep=',')
 tweets_data = dataset[[text_row_name, sentiment_row_name]]
@@ -36,16 +49,27 @@ vocab_size = len(tokenizer.word_index) + 1
 encoded_docs = tokenizer.texts_to_sequences(tweets)
 padded_sequence = pad_sequences(encoded_docs, maxlen=200)
 
-# Build model
-embedding_vector_length = 32
-model = Sequential()
-model.add(Embedding(vocab_size, embedding_vector_length, input_length=200))
-model.add(SpatialDropout1D(0.25))
-model.add(LSTM(50, dropout=0.5, recurrent_dropout=0.5))
-model.add(Dropout(0.2))
-model.add(Dense(1, activation='sigmoid'))
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-logger.info(f'Model Sumary: {model.summary()}')
+if model_hdf5 and model_json:
+    logger.info(f'Init load model!')
+    json_file = open(model_json, 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    model = model_from_json(loaded_model_json)
+    model.load_weights(model_hdf5)
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    logger.info(f'Model Sumary: {model.summary()}')
+else:
+    logger.info(f'Init create model!')
+    # Build model
+    embedding_vector_length = 32
+    model = Sequential()
+    model.add(Embedding(vocab_size, embedding_vector_length, input_length=200))
+    model.add(SpatialDropout1D(0.25))
+    model.add(LSTM(50, dropout=0.5, recurrent_dropout=0.5))
+    model.add(Dropout(0.2))
+    model.add(Dense(1, activation='sigmoid'))
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    logger.info(f'Model Sumary: {model.summary()}')
 
 # Training
 logger.info('Starting training!')
@@ -60,13 +84,14 @@ with open('model/model.json', 'w') as json_file:
 model.save_weights('model/model.h5')
 logger.info(f'Model saved in the model folder!')
 
-# Save tokenizer
-tokenizer_json = tokenizer.to_json()
-with io.open('tokenizer/tokenizer.json', 'w', encoding='utf-8') as json_file:
-    json_file.write(json.dumps(tokenizer_json, ensure_ascii=False))
-logger.info(f'Tokenizer saved in the tokenizer folder!')
+if not model_hdf5 and not model_json:
+    # Save tokenizer
+    tokenizer_json = tokenizer.to_json()
+    with io.open('tokenizer/tokenizer.json', 'w', encoding='utf-8') as json_file:
+        json_file.write(json.dumps(tokenizer_json, ensure_ascii=False))
+    logger.info(f'Tokenizer saved in the tokenizer folder!')
 
-# Save sentiment labels
-with open('labels/label.pkl', 'wb') as pkl_file:
-    pickle.dump(sentiment_label, pkl_file)
-logger.info(f'Sentiment label saved in the labels folder!')
+    # Save sentiment labels
+    with open('labels/label.pkl', 'wb') as pkl_file:
+        pickle.dump(sentiment_label, pkl_file)
+    logger.info(f'Sentiment label saved in the labels folder!')
