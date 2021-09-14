@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="m-10">
+    <h1 class="text-lg font-bold">Versionamento</h1>
     <table class="w-full mt-4">
       <thead>
         <tr class="table__header">
@@ -16,13 +17,13 @@
             <div>Época</div>
           </th>
           <th colspan="1">
-            <div>Quantidade analisada</div>
+            <div>Qtd. analisada</div>
           </th>
           <th colspan="1">
-            <div>Quantidade positivo</div>
+            <div>Qtd. positivo</div>
           </th>
           <th colspan="1">
-            <div>Quantidade Negativa</div>
+            <div>Qtd. negativa</div>
           </th>
           <th colspan="1">
             <div>Data de treinamento</div>
@@ -33,23 +34,23 @@
         <tr v-for="release in releases" :key="`subject_${release.id}`">
           <td colspan="1">{{ release.training_version }}</td>
           <td colspan="1">{{ release.accuracy }}</td>
-          <td class="text-green-500" colspan="1">
+          <td colspan="1">
             {{ release.correct_classify_percentage }}
           </td>
-          <td class="text-red-500" colspan="1">
-            {{ release.epoch }}
+          <td colspan="1">
+            {{ release.epochs }}
           </td>
-          <td class="text-red-500" colspan="1">
+          <td colspan="1">
             {{ release.amount_data }}
           </td>
-          <td class="text-red-500" colspan="1">
+          <td colspan="1">
             {{ release.amount_positive }}
           </td>
-          <td class="text-red-500" colspan="1">
+          <td colspan="1">
             {{ release.amount_negative }}
           </td>
-          <td class="text-red-500" colspan="1">
-            {{ release.training_date }}
+          <td colspan="1">
+            {{ release.training_date | ptDate }}
           </td>
         </tr>
         <tr v-if="!releases.length">
@@ -64,7 +65,9 @@
 export default {
   name: "Releases",
   async asyncData({ $axios }) {
-    const { data: releases } = await $axios.post(`/about/training`);
+    const {
+      data: { results: releases },
+    } = await $axios.get(`/about/training`);
 
     return {
       releases,
@@ -78,4 +81,28 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.table__header {
+  @apply bg-tertiary;
+}
+
+.table__header > th {
+  @apply text-left py-2 font-medium;
+}
+
+.table__header > th > div {
+  @apply flex items-center;
+}
+
+.table__body > tr {
+  @apply cursor-pointer;
+}
+
+.table__body > tr td {
+  @apply py-2;
+}
+
+.table__body tr:hover {
+  @apply bg-tertiary;
+}
+</style>
