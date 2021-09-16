@@ -29,10 +29,15 @@ def register_popular_subject(subject):
 @APP.task
 def update_timeline():
     """ Create timeline with crawler informations about Subject. """
-    subjects = Subject.objects.filter(no_data=False)
+    subjects = Subject.objects.all()
     if subjects.exists():
         for subject in subjects:
             subject_tweets = Tweet.objects.filter(hashtag=subject.hashtag)
+            if not subject_tweets:
+                continue
+            if subject.no_data:
+                subject.no_data = False
+                subject.save()
             interaction = subject_tweets.count()
             approval_percentage = subject_tweets.filter(analysis_result='Positivo').count()
             if approval_percentage:
@@ -52,11 +57,13 @@ def update_timeline():
 def crawling():
     """ This task manage crawling operations. """
     subjects = Subject.objects.all()
-    amount_subjects = subjects.count()
-    timeslot_per_subject = 3600 / amount_subjects  # One Hour
+    one_hour_in_minutes = 3600
     scrapyd = ScrapyD(settings.SCRAPYD_HOST, settings.SCRAPYD_PORT)
+    jobs = []
     for subject in subjects:
         job_id = scrapyd.start(subject.hashtag)
-        time.sleep(timeslot_per_subject)
-        scrapyd.stop(job_id)
+        jobs.append(job_id)
+    time.sleep(one_hour_in_minutes)
+    for job in jobs:
+        scrapyd.stop(job)
     LOGGER.info('Executed all crawling jobs to all subjects!')
