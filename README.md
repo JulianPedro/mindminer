@@ -20,6 +20,7 @@
 <p align="center">
     <img src="docs/diagram.png" alt="Mindminer" width="500">
 </p>
+
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
