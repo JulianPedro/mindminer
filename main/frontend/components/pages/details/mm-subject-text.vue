@@ -2,7 +2,8 @@
   <div class="subject__content">
     Todos os dados sobre <b>{{ subject.hashtag }}</b> foram obtidos através do
     Twitter e analisados por uma IA que classificou os tweets subjacentes com
-    base na versão de treinamento <a class="text-blue-500" href="#">0.01</a>. É
+    base na versão de treinamento
+    <a class="text-blue-500" href="/releases" target="_blank">0.01</a>. É
     importante levar os dados aqui contidos como base de referência e não
     verdade absoluta, a IA está em fase de aprendizagem e pode errar em alguns
     momentos.
