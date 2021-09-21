@@ -26,7 +26,7 @@
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Instalação do `docker` e `docker-compose`.
 * Arquivos de secrets contendo token de autenticação do Twitter e APINews.
-* Processador com intrução AVX (Necessário para classificação com Tensorflow.)
+* Processador com instrução AVX (Necessário para classificação com Tensorflow.)
 
 ## 🚀 Instalando Mindminer
 
