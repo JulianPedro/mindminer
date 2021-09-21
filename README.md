@@ -80,4 +80,4 @@ Principais contribuidores:
   </tr>
 </table>
 
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+[⬆ Voltar ao topo](#mindminer)<br>
