@@ -10,7 +10,7 @@
 
 
 
-<img src="docs/logo.png" alt="Mindminer">
+<img src="docs/logo.png" alt="Mindminer"  width="400" height="400">
 
 > Mindminer é um trabalho de conclusão de curso que visa a utilização das principais tecnologias para melhorar a percepção de grandes quantidades de dados e seus diversos nichos dentro do Twitter.
 
@@ -33,7 +33,7 @@ Para instalar o Mindminer, basta executar:
 docker-compose up
 ```
 
-## ☕ Usando <nome_do_projeto>
+## ☕ Usando o Mindminer
 
 Para usar o Mindminer, basta acessar:
 
