@@ -9,15 +9,17 @@
 ![Github stars](https://img.shields.io/github/stars/JulianPedro/mindminer?color=purple&style=for-the-badge)
 
 
-
-<img src="docs/logo.png" alt="Mindminer"  width="400" height="400">
+<p align="center">
+    <img src="docs/logo.png" alt="Mindminer" width="400" height="400">
+</p>
 
 > Mindminer é um trabalho de conclusão de curso que visa a utilização das principais tecnologias para melhorar a percepção de grandes quantidades de dados e seus diversos nichos dentro do Twitter.
 
 ## 💡 Arquitetura
 
-![Diagram](docs/diagram.png)
-
+<p align="center">
+    <img src="docs/diagram.png" alt="Mindminer" width="500">
+</p>
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
