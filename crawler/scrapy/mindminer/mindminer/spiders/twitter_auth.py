@@ -18,7 +18,7 @@ class TwitterAuth(Spider):
         'access_token_key': os.environ.get('access_token_key'),
         'access_token_secret': os.environ.get('access_token_secret')
     }
-    max_tweets = 2
+    max_tweets = 100
 
     def __init__(self, query='', *args, **kwargs):
         super().__init__(*args, **kwargs)
