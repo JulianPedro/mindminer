@@ -10,27 +10,18 @@ from faker import Faker
 class NewsTestCase(APITestCase):
     """ News Test Case. """
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         """ Setup Test Data """
-        super().setUpClass()
-        cls.news_object = NewsFactory.build()
-        cls.news_saved = NewsFactory.create()
-        cls.client = APIClient()
-        cls.news_url = reverse('news')
-        cls.faker_obj = Faker()
+        self.news_saved = NewsFactory()
+        self.client = APIClient()
+        self.news_url = reverse('news-list')
+        self.faker_obj = Faker()
 
     def test_if_get_news(self):
         """ Try get news in request API. """
         response = self.client.get(self.news_url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        response_object = response.json().get('results')[0]
         self.assertEqual(News.objects.count(), 1)
-        news = News.objects.get(title=self.news_object.title)
-        self.assertEqual(
-            news.description,
-            self.news_object.description,
-        )
-        self.assertEqual(
-            news.newspaper,
-            self.news_object.newspaper,
-        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response_object.get('description'), self.news_saved.description)
+        self.assertEqual(response_object.get('newspaper'), self.news_saved.newspaper)
