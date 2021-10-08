@@ -26,6 +26,8 @@ services:
     image: postgres:11.6-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
     environment:
       - ./backend/env/main.env
     networks:
