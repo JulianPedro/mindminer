@@ -8,15 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        db: [ postgres ]
-        python-version: [ 3.8 ]
-        include:
-          - db: postgres
-            db_port: 5432
-
     services:
       postgres:
         image: postgres:11
@@ -31,7 +22,18 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-
+      redis:
+        image: redis
+        env:
+          REDIS_HOST: redis
+          REDIS_PORT: 6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -51,5 +53,7 @@ jobs:
         SQL_PASSWORD: postgres
         SQL_HOST: localhost
         SQL_PORT: 5432
+        REDIS_HOST: localhost
+        REDIS_PORT: 6379
       run: |
         python main/backend/django/manage.py test

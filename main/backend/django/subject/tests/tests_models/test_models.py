@@ -9,10 +9,9 @@ from subject.tests.factories.timeline import TimelineFactory
 class SubjectTest(TestCase):
     """ Subject Test """
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
         """ Setup Test Data """
-        cls.subject = SubjectFactory()
+        self.subject = SubjectFactory()
 
     def test_create_subject(self):
         self.assertEquals(str(self.subject), str(self.subject.hashtag))
@@ -21,10 +20,9 @@ class SubjectTest(TestCase):
 class TimelineTest(TestCase):
     """ Timeline Test """
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
         """ Setup Test Data """
-        cls.timeline = TimelineFactory()
+        self.timeline = TimelineFactory()
 
     def test_create_subject(self):
         self.assertEquals(str(self.timeline),
