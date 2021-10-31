@@ -52,4 +52,4 @@ jobs:
         SQL_HOST: localhost
         SQL_PORT: 5432
       run: |
-        python main/backend/django/manage.py test
+        python main/backend/django/manage.py test --exclude-tag=task

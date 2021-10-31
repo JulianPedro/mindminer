@@ -1,4 +1,4 @@
-from django.test import TransactionTestCase
+from django.test import TransactionTestCase, tag
 from celery.contrib.testing.worker import start_worker
 
 from mindminer.celery import APP
@@ -26,6 +26,7 @@ class GetNewsTestCase(TransactionTestCase):
         self.task = get_news.delay()
         self.results = self.task.get()
 
+    @tag('task')
     def test_success(self):
         """ Test if get news works. """
         self.assertEqual(self.task.state, 'SUCCESS')

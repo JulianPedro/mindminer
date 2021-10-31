@@ -1,4 +1,4 @@
-from django.test import TransactionTestCase
+from django.test import TransactionTestCase, tag
 from celery.contrib.testing.worker import start_worker
 
 from mindminer.celery import APP
@@ -26,6 +26,7 @@ class RegisterPopularSubjectTestCase(TransactionTestCase):
         self.task = register_popular_subject.delay('bar')
         self.results = self.task.get()
 
+    @tag('task')
     def test_success(self):
         """ Teste if success when execute. """
         self.assertEqual(self.task.state, 'SUCCESS')
@@ -52,8 +53,7 @@ class UpdateTimelineTestCase(TransactionTestCase):
         self.task = update_timeline.delay()
         self.results = self.task.get()
 
+    @tag('task')
     def test_success(self):
         """ Teste if success when execute. """
         self.assertEqual(self.task.state, 'SUCCESS')
-
-
