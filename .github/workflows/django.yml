@@ -8,14 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    #strategy:
-    #  max-parallel: 4
-    #  matrix:
-    #    db: [ postgres ]
-    #    python-version: [ 3.8 ]
-    #    include:
-    #      - db: postgres
-    #        db_port: 5432
     services:
       postgres:
         image: postgres:11
@@ -64,4 +56,4 @@ jobs:
         REDIS_HOST: localhost
         REDIS_PORT: 6379
       run: |
-        python main/backend/django/manage.py test --exclude-tag=task
+        python main/backend/django/manage.py test
