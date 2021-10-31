@@ -21,12 +21,14 @@ services:
       - loki
 
   grafana:
-    image: grafana/grafana:latest
+    build: .
+    command: cd /usr/share/grafana/var/lib/grafana/plugins/mongodb-grafana && npm run server
     ports:
       - "3000:3000"
     networks:
       - loki
     volumes:
+      - ./config/grafana.ini:/etc/grafana/grafana.ini
       - grafana-storage:/var/lib/grafana
 
 volumes:
