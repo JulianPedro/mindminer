@@ -32,6 +32,9 @@ jobs:
           - 5432:5432
       redis:
         image: redis
+        env:
+          REDIS_HOST: redis
+          REDIS_PORT: 6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
